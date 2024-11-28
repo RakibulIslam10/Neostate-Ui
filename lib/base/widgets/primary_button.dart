@@ -24,7 +24,9 @@ class PrimaryButton extends StatelessWidget {
     this.isLoading = false,
     this.primary = false,
     this.disable = false,
+    this.padding,
   });
+
   final String title;
   final VoidCallback onPressed;
   final Color? borderColor;
@@ -39,65 +41,47 @@ class PrimaryButton extends StatelessWidget {
   final bool isLoading;
   final bool primary;
   final bool disable;
-  ValueNotifier<bool> isPadding = ValueNotifier<bool>(false);
+  final EdgeInsets? padding;
 
   @override
   Widget build(BuildContext context) {
     return isLoading
         ? const Loader()
-        : ValueListenableBuilder<bool>(
-            valueListenable: isPadding,
-            builder: (context, value, child) {
-              return AnimatedContainer(
-                duration: const Duration(milliseconds: 300),
-                padding: EdgeInsets.symmetric(
-                  horizontal: isPadding.value ? 5 : 0,
-                ),
-                height: height ?? Dimensions.buttonHeight * 0.8,
-                width: double.infinity,
-                child: ElevatedButton(
-                  onPressed: () {
-                    isPadding.value = !isPadding.value;
-                    Future.delayed(const Duration(milliseconds: 220), () {
-                      isPadding.value = !isPadding.value;
-                    });
-                    onPressed();
-                  },
-                  style: ElevatedButton.styleFrom(
-                    elevation: 0,
-                    shape: shape ??
-                        RoundedRectangleBorder(
-                          borderRadius:
-                              BorderRadius.circular(Dimensions.radius * 1.2),
-                        ),
-                    backgroundColor:
-                        disable ? CustomColor.disableColor : buttonColor,
-                    side: BorderSide(
-                      width: borderWidth,
-                      color: disable
-                          ? CustomColor.disableColor
-                          : borderColor ?? CustomColor.primary,
-                    ),
-                  ),
-                  child: AnimatedContainer(
-                    duration: const Duration(milliseconds: 350),
-                    child: TextWidget(
-                      title,
-                      fontSize: isPadding.value
-                          ? Dimensions.titleMedium * 0.95
-                          : fontSize ?? Dimensions.titleMedium,
-                      fontWeight: fontWeight ?? FontWeight.w700,
-                      color: primary
-                          ? CustomColor.primary
-                          : buttonTextColor ?? Colors.white,
-                      maxLines: 1,
-                      textOverflow: TextOverflow.ellipsis,
-                      textAlign: TextAlign.center,
-                    ),
-                  ),
-                ),
-              );
-            },
-          );
+        : Container(
+      height: height ?? Dimensions.buttonHeight * 0.8,
+      width: double.infinity,
+      padding: padding,
+      child: ElevatedButton(
+        onPressed: disable ? null : onPressed,
+        style: ElevatedButton.styleFrom(
+          padding: padding ?? EdgeInsets.symmetric(horizontal: Dimensions.paddingSize * 0.4),
+          elevation: 0,
+          shape: shape ??
+              RoundedRectangleBorder(
+                borderRadius:
+                BorderRadius.circular(Dimensions.radius * 1.2),
+              ),
+          backgroundColor:
+          disable ? CustomColor.disableColor : buttonColor,
+          side: BorderSide(
+            width: borderWidth,
+            color: disable
+                ? CustomColor.disableColor
+                : borderColor ?? CustomColor.primary,
+          ),
+        ),
+        child: TextWidget(
+          title,
+          fontSize: fontSize ?? Dimensions.titleMedium,
+          fontWeight: fontWeight ?? FontWeight.w700,
+          color: primary
+              ? CustomColor.primary
+              : buttonTextColor ?? Colors.white,
+          maxLines: 1,
+          textOverflow: TextOverflow.ellipsis,
+          textAlign: TextAlign.center,
+        ),
+      ),
+    );
   }
 }

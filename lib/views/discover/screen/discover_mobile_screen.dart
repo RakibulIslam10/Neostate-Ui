@@ -14,22 +14,7 @@ class DiscoverMobileScreen extends GetView<DiscoverController> {
     return Column(
       children: [
         TopBarWidget(),
-        Expanded(
-          child: Stack(
-            alignment: Alignment.bottomCenter,
-            children: [
-            GoogleMap(
-              initialCameraPosition: controller.initialCameraPosition.value,
-              onTap: (argument) {},
-            ),
-              Container(
-                padding: EdgeInsets.symmetric(vertical: Dimensions.verticalSize,horizontal: Dimensions.defaultHorizontalSize,),
-              // color: CustomColor.,
-
-              )
-
-          ],)
-        ),
+        MapWidget(),
       ],
     );
   }

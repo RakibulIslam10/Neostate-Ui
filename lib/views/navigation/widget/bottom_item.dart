@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../../../base/themes/token.dart';
 import '../../../base/utils/basic_import.dart';
-import '../../../base/widgets/text_widget.dart';
 import '../controller/navigation_controller.dart';
 
 class BottomItem extends StatelessWidget {
@@ -33,7 +31,7 @@ class BottomItem extends StatelessWidget {
                 label,
                 style: TextStyle(
                   fontSize: Dimensions.labelSmall,
-                  fontWeight: FontWeight.bold,
+                  fontWeight: FontWeight.w900,
                 ),
                 color: controller.selectedIndex.value == index
                     ? CustomColor.blackColor

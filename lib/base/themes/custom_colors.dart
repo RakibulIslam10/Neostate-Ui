@@ -5,6 +5,7 @@ class CustomColor {
   static Color primary = HexColor('#00B98E');
   static Color secondary = HexColor('#19173D');
   static Color tertiary = HexColor('#F5F5F5');
+  static Color primary2 = HexColor('#53f393');
   static Color background = HexColor('#F7F8F8');
   static Color typography = HexColor('#1D1D1D');
   static Color disableColor = HexColor('#BCBCBC');

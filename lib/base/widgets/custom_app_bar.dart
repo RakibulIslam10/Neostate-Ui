@@ -5,6 +5,7 @@ import 'package:nfcpay_structure/base/widgets/text_widget.dart';
 import '../themes/token.dart';
 import '../utils/dimensions.dart';
 import 'back_button.dart';
+
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   const CustomAppBar(
     this.title, {

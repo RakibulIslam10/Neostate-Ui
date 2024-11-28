@@ -12,5 +12,10 @@ class RoutePageList {
       page: () => SplashScreen(),
       binding: SplashBinding(),
     ),
+    GetPage(
+      name: Routes.ProductDetails,
+      page: () => ProductDetailsScreen(),
+
+    ),
   ];
 }
