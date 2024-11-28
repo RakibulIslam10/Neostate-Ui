@@ -1,0 +1,63 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
+import 'package:nfcpay_structure/routes/routes.dart';
+import 'base/themes/token.dart';
+import 'initializer.dart';
+import 'languages/strings.dart';
+
+
+void main() async {
+  AppInitializer.init();
+  runApp(const MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    ScreenUtil.init(context);
+    return ScreenUtilInit(
+      minTextAdapt: true,
+      splitScreenMode: true,
+      ensureScreenSize: true,
+      designSize: const Size(375, 812),
+      builder: (_, child) =>
+          GetMaterialApp(
+            debugShowCheckedModeBanner: false,
+            initialRoute: Routes.splashScreen,
+            title: Strings.appName,
+            theme: Themes.light,
+            darkTheme: Themes.dark,
+            getPages: Routes.list,
+            themeMode: ThemeMode.light,
+
+            // initialBinding: BindingsBuilder(
+            //       () async {
+            //     Get.put(SystemMaintenanceController());
+            //     await DynamicLanguage.init(url: ApiConfig.languageUrl);
+            //     Get.lazyPut(() => NavigationController());
+            //   },
+            // ),
+            // builder: (context, widget) {
+            //   ScreenUtil.init(context);
+            //   return Obx(
+            //         () =>
+            //         MediaQuery(
+            //           data: MediaQuery.of(context)
+            //               .copyWith(textScaler: TextScaler.linear(1.0)),
+            //           child: Directionality(
+            //             textDirection: DynamicLanguage.isLoading
+            //                 ? TextDirection.ltr
+            //                 : DynamicLanguage.languageDirection,
+            //             child: widget!,
+            //           ),
+            //         ),
+            //   );
+            // },
+
+          ),
+    );
+  }
+}

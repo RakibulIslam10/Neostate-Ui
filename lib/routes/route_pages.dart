@@ -1,0 +1,16 @@
+part of '../routes/routes.dart';
+
+class RoutePageList {
+  static var list = [
+    GetPage(
+      name: Routes.navigation,
+      page: () => const NavigationScreen(),
+      binding: NavigationBindings(),
+    ),
+    GetPage(
+      name: Routes.splashScreen,
+      page: () => SplashScreen(),
+      binding: SplashBinding(),
+    ),
+  ];
+}
