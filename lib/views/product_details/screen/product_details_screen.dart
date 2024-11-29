@@ -5,7 +5,6 @@ import 'package:nfcpay_structure/views/product_details/widgets/info_box_widget.d
 import 'package:nfcpay_structure/views/product_details/widgets/menu_button_widget.dart';
 import 'package:nfcpay_structure/views/product_details/widgets/text_heading_widget.dart';
 import '../../../base/utils/basic_import.dart';
-import '../../../base/widgets/custom_app_bar.dart';
 import '../controller/product_details_controller.dart';
 part 'product_details_tablet_screen.dart';
 part 'product_details_mobile_screen.dart';
