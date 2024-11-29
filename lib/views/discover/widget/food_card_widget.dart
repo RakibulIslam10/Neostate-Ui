@@ -31,6 +31,8 @@ class FoodCardWidget extends GetView<DiscoverController> {
                   splashColor: Colors.transparent,
                   highlightColor: Colors.transparent,
                   child: Container(
+                    margin:
+                        EdgeInsets.only(right: Dimensions.horizontalSize * 0.5),
                     alignment: Alignment.center,
                     height: MediaQuery.of(context).size.height * 0.12,
                     padding: EdgeInsets.symmetric(
@@ -49,7 +51,7 @@ class FoodCardWidget extends GetView<DiscoverController> {
                           height: MediaQuery.of(context).size.height * 0.1,
                           width: MediaQuery.of(context).size.height * 0.16,
                           borderRadius:
-                              BorderRadius.circular(Dimensions.radius * 0.8),
+                              BorderRadius.circular(Dimensions.radius * 1.5),
                         ),
                         Sizes.width.v10,
                         Column(

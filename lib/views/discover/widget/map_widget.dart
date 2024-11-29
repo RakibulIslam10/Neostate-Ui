@@ -13,7 +13,11 @@ class MapWidget extends GetView<DiscoverController> {
   Widget build(BuildContext context) {
     return Expanded(
       child: Stack(
-        children: [_googleMap(), _productCard(), _buttonWidget(context)],
+        children: [
+          _googleMap(),
+          _productCard(),
+          _buttonWidget(context),
+        ],
       ),
     );
   }
@@ -30,24 +34,28 @@ class MapWidget extends GetView<DiscoverController> {
             Sizes.width.v5,
             _listButtonWidget(),
             Sizes.width.v40,
-            Container(
-              padding: EdgeInsets.all(Dimensions.paddingSize * 0.4),
-              decoration: BoxDecoration(
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.black.withOpacity(0.1),
-                    blurRadius: 8,
-                    spreadRadius: 2,
-                    offset: Offset(0, 4),
-                  ),
-                ],
-                shape: BoxShape.circle,
-                color: CustomColor.whiteColor,
-              ),
-              child: Icon(Icons.location_pin),
-            ),
+            _locationButton(),
           ],
         ));
+  }
+
+  _locationButton() {
+    return Container(
+      padding: EdgeInsets.all(Dimensions.paddingSize * 0.4),
+      decoration: BoxDecoration(
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withOpacity(0.1),
+            blurRadius: 8,
+            spreadRadius: 2,
+            offset: Offset(0, 4),
+          ),
+        ],
+        shape: BoxShape.circle,
+        color: CustomColor.whiteColor,
+      ),
+      child: Icon(Icons.location_pin),
+    );
   }
 
   _productCard() {

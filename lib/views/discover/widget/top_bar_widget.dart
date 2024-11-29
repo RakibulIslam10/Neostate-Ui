@@ -27,7 +27,12 @@ class TopBarWidget extends GetView<DiscoverController> {
           ),
           Padding(
             padding: EdgeInsets.only(left: Dimensions.horizontalSize * 6.5),
-            child: IconButton(onPressed: () {}, icon: Icon(Icons.search)),
+            child: IconButton(
+                onPressed: () {},
+                icon: Icon(
+                  Icons.search,
+                  size: Dimensions.iconSizeLarge * 1.1,
+                )),
           )
         ],
       ),
