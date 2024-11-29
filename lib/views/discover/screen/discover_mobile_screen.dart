@@ -15,7 +15,10 @@ class DiscoverMobileScreen extends GetView<DiscoverController> {
       children: [
         TopBarWidget(),
         MapWidget(),
+
       ],
     );
   }
+  
 }
+

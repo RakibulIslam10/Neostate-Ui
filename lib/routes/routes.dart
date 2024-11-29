@@ -6,6 +6,8 @@ import 'package:nfcpay_structure/splash/screen/splash_screen.dart';
 import 'package:nfcpay_structure/views/filter/screen/filter_screen.dart';
 import 'package:nfcpay_structure/views/navigation/screen/navigation_screen.dart';
 import 'package:nfcpay_structure/views/product_details/screen/product_details_screen.dart';
+import 'package:nfcpay_structure/views/product_list/screen/product_list_screen.dart';
+import '../bindings/product_list_screen_binding.dart';
 import '../bindings/splash_binding.dart';
 part '../routes/route_pages.dart';
 
@@ -18,6 +20,7 @@ class Routes {
   static const String navigation = '/navigation';
   static const String ProductDetails = '/productDetails';
   static const String filterScreen = '/filterScreen';
+  static const String productListScreen = '/productListScreen';
 
 
 }

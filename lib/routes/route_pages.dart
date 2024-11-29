@@ -17,11 +17,15 @@ class RoutePageList {
       page: () => ProductDetailsScreen(),
       binding: ProductDetailsBindings(),
     ),
-
     GetPage(
       name: Routes.filterScreen,
       page: () => FilterScreen(),
       binding: FilterScreenBinding(),
+    ),
+    GetPage(
+      name: Routes.productListScreen,
+      page: () => ProductListScreen(),
+      binding: ProductListScreenBinding(),
     ),
   ];
 }

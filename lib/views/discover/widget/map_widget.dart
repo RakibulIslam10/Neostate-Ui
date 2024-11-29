@@ -13,46 +13,71 @@ class MapWidget extends GetView<DiscoverController> {
   Widget build(BuildContext context) {
     return Expanded(
       child: Stack(
-        children: [
-          GoogleMap(
-            initialCameraPosition: controller.initialCameraPosition.value ??
-                CameraPosition(
-                  // Provide a fallback CameraPosition
-                  target: const LatLng(0.0, 0.0),
-                  zoom: 10.0,
-                ),
-            onTap: (argument) {
-              controller.toggleFoodCardVisibility();
-            },
-          ),
-          Obx(() {
-            return controller.isFoodCardVisible.value
-                ? Positioned(
-                    bottom: 140.0,
-                    left: 16.0,
-                    right: 16.0,
-                    child: FoodCardWidget(),
-                  )
-                : const SizedBox.shrink();
-          }),
-          Positioned(
-              bottom: 75.0,
-              left: 16.0,
-              right: 16.0,
-              child: Row(
-                mainAxisAlignment: mainCenter,
-                children: [
-                  _fillerButtonWidget(),
-                  Sizes.width.v5,
-                  _listButtonWidget(),
-                ],
-              ))
-        ],
+        children: [_googleMap(), _productCard(), _buttonWidget(context)],
       ),
     );
   }
 
-  _fillerButtonWidget() {
+  _buttonWidget(BuildContext context) {
+    return Positioned(
+        bottom: 75.0,
+        left: 16.0,
+        right: 16.0,
+        child: Row(
+          mainAxisAlignment: mainEnd,
+          children: [
+            _fillerButtonWidget(context),
+            Sizes.width.v5,
+            _listButtonWidget(),
+            Sizes.width.v40,
+            Container(
+              padding: EdgeInsets.all(Dimensions.paddingSize * 0.4),
+              decoration: BoxDecoration(
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black.withOpacity(0.1),
+                    blurRadius: 8,
+                    spreadRadius: 2,
+                    offset: Offset(0, 4),
+                  ),
+                ],
+                shape: BoxShape.circle,
+                color: CustomColor.whiteColor,
+              ),
+              child: Icon(Icons.location_pin),
+            ),
+          ],
+        ));
+  }
+
+  _productCard() {
+    return Obx(() {
+      return controller.isFoodCardVisible.value
+          ? Positioned(
+              bottom: 140.0,
+              left: 16.0,
+              right: 16.0,
+              child: FoodCardWidget(),
+            )
+          : const SizedBox.shrink();
+    });
+  }
+
+  _googleMap() {
+    return GoogleMap(
+      initialCameraPosition: controller.initialCameraPosition.value ??
+          CameraPosition(
+            // Provide a fallback CameraPosition
+            target: const LatLng(0.0, 0.0),
+            zoom: 10.0,
+          ),
+      onTap: (argument) {
+        controller.toggleFoodCardVisibility();
+      },
+    );
+  }
+
+  _fillerButtonWidget(context) {
     return InkWell(
       highlightColor: Colors.transparent,
       splashColor: Colors.transparent,
@@ -97,7 +122,7 @@ class MapWidget extends GetView<DiscoverController> {
       highlightColor: Colors.transparent,
       splashColor: Colors.transparent,
       onTap: () {
-        // Get.toNamed(Routes.filterScreen);
+        Get.toNamed(Routes.productListScreen);
       },
       child: Container(
         padding: EdgeInsets.symmetric(

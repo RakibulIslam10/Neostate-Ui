@@ -18,7 +18,6 @@ class LocationMapWidget extends GetView<ProductDetailsController> {
           child: Wrap(
             children: [
             Icon(Icons.location_pin,),
-
             TextWidget(
               padding: EdgeInsets.only(left: Dimensions.horizontalSize *0.5),
               Strings.location,fontWeight: FontWeight.bold,),

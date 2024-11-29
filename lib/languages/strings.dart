@@ -26,12 +26,27 @@ class Strings {
   static String menu = "Menu";
   static String cbBenefit = "--CB benefit";
   static String days = "90 days";
+  static String day = "Day";
+  static String time = "Time";
+  static String category = "Category";
+  static String apply = "Apply";
+  static String today = "Today";
   static String onSite = "On-site";
   static String bookDeal = "Book deal";
   static String allReview = "All review";
   static String reportIssue = "Report issue";
   static String filter = "Filter";
   static String list = "List  ";
+  static String reset = "Reset";
+
+
+
+
+
+
+
+
+
   static String description =
       "You order 2 pizzas of your the cheaper/equally priced one will not be charged";
   static String description2 =
