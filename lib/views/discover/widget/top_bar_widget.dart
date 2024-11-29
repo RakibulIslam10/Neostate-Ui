@@ -11,7 +11,7 @@ class TopBarWidget extends GetView<DiscoverController> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(top: Dimensions.verticalSize * 0.8),
+      margin: EdgeInsets.only(top: Dimensions.verticalSize),
       color: CustomColor.whiteColor,
       width: double.maxFinite,
       padding: EdgeInsets.symmetric(vertical: Dimensions.verticalSize * 0.2),
@@ -26,7 +26,7 @@ class TopBarWidget extends GetView<DiscoverController> {
                 selectMethod: controller.countrySelectMethod),
           ),
           Padding(
-            padding: EdgeInsets.only(left: Dimensions.horizontalSize * 8),
+            padding: EdgeInsets.only(left: Dimensions.horizontalSize * 6.5),
             child: IconButton(onPressed: () {}, icon: Icon(Icons.search)),
           )
         ],

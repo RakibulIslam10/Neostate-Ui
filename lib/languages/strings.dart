@@ -30,6 +30,8 @@ class Strings {
   static String bookDeal = "Book deal";
   static String allReview = "All review";
   static String reportIssue = "Report issue";
+  static String filter = "Filter";
+  static String list = "List  ";
   static String description =
       "You order 2 pizzas of your the cheaper/equally priced one will not be charged";
   static String description2 =

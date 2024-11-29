@@ -324,6 +324,8 @@ class _CountryDropDownState<T> extends State<CountryDropDown<T>>
                                     ],
                                   ),
                                 TextWidget(
+                                  fontWeight: FontWeight.w900,
+                                  fontSize: Dimensions.titleLarge,
                                   widget.selectMethod.value,
                                   typographyStyle: TypographyStyle.titleMedium,
                                   style: CustomStyle.titleMedium.copyWith(
