@@ -15,7 +15,7 @@ class RoutePageList {
     GetPage(
       name: Routes.ProductDetails,
       page: () => ProductDetailsScreen(),
-
+      binding: ProductDetailsBindings(),
     ),
   ];
 }

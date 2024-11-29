@@ -4,7 +4,10 @@ import 'package:nfcpay_structure/views/product_details/controller/product_detail
 import '../../../base/utils/basic_import.dart';
 
 class InfoBoxWidget extends GetView<ProductDetailsController> {
-  const InfoBoxWidget({super.key});
+  const InfoBoxWidget(this.text, this.description, {super.key});
+
+  final String text;
+  final String description;
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +23,7 @@ class InfoBoxWidget extends GetView<ProductDetailsController> {
           borderRadius: BorderRadius.circular(Dimensions.radius * 0.8)),
       child: Column(
         children: [
-          _heading_text(),
+          _heading_text(text),
           Row(
             mainAxisAlignment: mainCenter,
             children: [
@@ -31,7 +34,7 @@ class InfoBoxWidget extends GetView<ProductDetailsController> {
               _horizontalButton(Strings.onSite, Icons.location_pin),
             ],
           ),
-          TextWidget(Strings.description, fontSize: Dimensions.titleSmall),
+          TextWidget(description, fontSize: Dimensions.titleSmall),
           Sizes.height.v10,
           PrimaryButton(
             buttonTextColor: CustomColor.blackColor,
@@ -76,12 +79,12 @@ class InfoBoxWidget extends GetView<ProductDetailsController> {
     );
   }
 
-  _heading_text() {
+  _heading_text(text) {
     return Row(
       mainAxisAlignment: mainSpaceBet,
       children: [
         TextWidget(
-          Strings.twoForOne,
+          text,
           fontWeight: FontWeight.w900,
         ),
         Icon(Icons.info),

@@ -8,16 +8,30 @@ class Strings {
   static String pizzeriaMimmo = "Pizzeria Mimmo";
   static String italianPastaPizza = "Italian Pasta, Pizza";
   static String rating = "3.7 |";
+  static String ratingAndReview = "293 ratings | 25 reviews";
+  static String ratings = "4.7";
+  static String ratingsAndReviews = "Ratings & reviews";
   static String mi = "4.68572 mi ";
   static String pizza = "| Pizza";
   static String twoForOne = "2for1 pizza";
+  static String twoForOneHotDrink = "2for1 Hot Drink";
   static String freeDrink = "Free Drink";
   static String closed = "Closed";
+  static String location = "Location";
+  static String address = "Dhaka Str. 57";
+  static String contact = "Contact";
+  static String number = "02226036 0554";
+  static String openingHours = "Opening hours";
   static String ccc = "ccc |";
   static String menu = "Menu";
   static String cbBenefit = "--CB benefit";
   static String days = "90 days";
   static String onSite = "On-site";
   static String bookDeal = "Book deal";
-  static String description = "You order 2 pizzas of your the cheaper/equally priced one will not be charged";
+  static String allReview = "All review";
+  static String reportIssue = "Report issue";
+  static String description =
+      "You order 2 pizzas of your the cheaper/equally priced one will not be charged";
+  static String description2 =
+      "you order 2 hot drink of your choice the cheaper/equally priced one will not be charged";
 }

@@ -12,13 +12,17 @@ class ProductDetailsMobileScreen extends GetView<ProductDetailsController> {
 
   _bodyWidget(BuildContext context) {
     return SafeArea(
-      child: Column(
+      child: ListView(
         children: [
           ImageWidgets(),
           TextHeadingWidget(),
           MenuButtonWidget(),
-          InfoBoxWidget(),
-
+          InfoBoxWidget(Strings.twoForOne, Strings.description),
+          InfoBoxWidget(Strings.twoForOneHotDrink, Strings.description2),
+          RatingReviewsWidget(),
+          CommentsSectionWidget(),
+          LocationMapWidget(),
+          ContactAndOpeningWidget(),
         ],
       ),
     );
