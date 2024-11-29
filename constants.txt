@@ -1,0 +1,6 @@
+appName
+error
+discover
+feed
+booking
+profile
