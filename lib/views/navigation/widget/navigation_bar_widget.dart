@@ -1,6 +1,3 @@
-import 'package:flutter/material.dart';
-import 'package:nfcpay_structure/languages/strings.dart';
-import '../../../base/themes/token.dart';
 import '../../../base/utils/basic_import.dart';
 import 'bottom_item.dart';
 

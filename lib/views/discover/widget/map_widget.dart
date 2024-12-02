@@ -1,10 +1,5 @@
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:nfcpay_structure/base/utils/basic_import.dart';
-import 'package:nfcpay_structure/routes/routes.dart';
+import '../../../base/utils/basic_import.dart';
 import 'food_card_widget.dart';
-import 'package:nfcpay_structure/views/discover/controller/discover_controller.dart';
 
 class MapWidget extends GetView<DiscoverController> {
   const MapWidget({super.key});
@@ -41,21 +36,26 @@ class MapWidget extends GetView<DiscoverController> {
   }
 
   _locationButton() {
-    return Container(
-      padding: EdgeInsets.all(Dimensions.paddingSize * 0.4),
-      decoration: BoxDecoration(
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withOpacity(0.1),
-            blurRadius: 8,
-            spreadRadius: 2,
-            offset: Offset(0, 4),
-          ),
-        ],
-        shape: BoxShape.circle,
-        color: CustomColor.whiteColor,
+    return InkWell(
+      onTap: () {
+        controller.getCurrentLocation();
+      },
+      child: Container(
+        padding: EdgeInsets.all(Dimensions.paddingSize * 0.4),
+        decoration: BoxDecoration(
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withOpacity(0.1),
+              blurRadius: 8,
+              spreadRadius: 2,
+              offset: Offset(0, 4),
+            ),
+          ],
+          shape: BoxShape.circle,
+          color: CustomColor.whiteColor,
+        ),
+        child: Icon(Icons.location_pin),
       ),
-      child: Icon(Icons.location_pin),
     );
   }
 
@@ -73,15 +73,30 @@ class MapWidget extends GetView<DiscoverController> {
   }
 
   _googleMap() {
-    return GoogleMap(
-      initialCameraPosition: controller.initialCameraPosition.value ??
-          CameraPosition(
-            // Provide a fallback CameraPosition
-            target: const LatLng(0.0, 0.0),
-            zoom: 10.0,
+    return Obx(
+      () {
+        final latitude = controller.myLatitude.value;
+        final longitude = controller.myLongitude.value;
+
+        return GoogleMap(
+          initialCameraPosition: CameraPosition(
+            target: LatLng(latitude, longitude),
+            zoom: 14.0,
           ),
-      onTap: (argument) {
-        controller.toggleFoodCardVisibility();
+          markers: {
+            Marker(
+              markerId: MarkerId('currentLocation'),
+              position: LatLng(latitude, longitude),
+              infoWindow: InfoWindow(
+                title: Strings.location,
+                snippet: Strings.myCurrentLocation,
+              ),
+            ),
+          },
+          onMapCreated: (GoogleMapController mapController) {
+            // You can do additional map setup here if needed
+          },
+        );
       },
     );
   }

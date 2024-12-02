@@ -1,5 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+import 'package:nfcpay_structure/base/widgets/primary_input_widget.dart';
 import 'package:nfcpay_structure/views/product_list/widget/product_list_widget.dart';
 import 'package:nfcpay_structure/views/product_list/widget/top_bar.dart';
 import '../../../base/utils/basic_import.dart';

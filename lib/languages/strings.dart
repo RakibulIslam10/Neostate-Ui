@@ -18,6 +18,7 @@ class Strings {
   static String freeDrink = "Free Drink";
   static String closed = "Closed";
   static String location = "Location";
+  static String myCurrentLocation = "My Current Location";
   static String address = "Dhaka Str. 57";
   static String contact = "Contact";
   static String number = "02226036 0554";

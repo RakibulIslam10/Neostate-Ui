@@ -1,6 +1,3 @@
-import 'package:flutter/material.dart';
-import 'package:get/get_state_manager/src/simple/get_view.dart';
-import 'package:nfcpay_structure/views/product_details/controller/product_details_controller.dart';
 import '../../../base/utils/basic_import.dart';
 
 class CommentsSectionWidget extends GetView<ProductDetailsController> {
@@ -48,7 +45,7 @@ class CommentsSectionWidget extends GetView<ProductDetailsController> {
                           return Icon(
                             Icons.star,
                             size: Dimensions.iconSizeSmall * 1.8,
-                            color: CustomColor.primary2,
+                            color: CustomColor.primary,
                           );
                         },
                       )

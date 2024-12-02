@@ -1,7 +1,3 @@
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:nfcpay_structure/routes/routes.dart';
-import 'package:nfcpay_structure/views/product_details/controller/product_details_controller.dart';
 import '../../../base/utils/basic_import.dart';
 
 class ContactAndOpeningWidget extends GetView<ProductDetailsController> {

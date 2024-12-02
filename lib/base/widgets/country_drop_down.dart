@@ -19,6 +19,7 @@ class CountryDropDown<T> extends StatefulWidget {
   final Widget? leading;
   final EdgeInsets? fieldPadding;
   final String label;
+
   const CountryDropDown({
     required this.itemsList,
     required this.selectMethod,
@@ -320,7 +321,7 @@ class _CountryDropDownState<T> extends State<CountryDropDown<T>>
                                   ),
                                 TextWidget(
                                   fontWeight: FontWeight.w900,
-                                  fontSize: Dimensions.titleLarge,
+                                  fontSize: Dimensions.titleMedium * 1.2,
                                   widget.selectMethod.value,
                                   typographyStyle: TypographyStyle.titleMedium,
                                   style: CustomStyle.titleMedium.copyWith(

@@ -1,7 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import '../../../base/utils/basic_import.dart';
-import '../../../base/widgets/custom_app_bar.dart';
 import '../controller/navigation_controller.dart';
 import '../widget/navigation_bar_widget.dart';
 part 'navigation_mobile_screen.dart';

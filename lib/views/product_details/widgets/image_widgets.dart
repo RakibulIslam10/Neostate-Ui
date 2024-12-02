@@ -1,9 +1,4 @@
-import 'package:cached_network_image/cached_network_image.dart';
-import 'package:flutter/material.dart';
-import 'package:get/get_core/src/get_main.dart';
-import 'package:get/get_navigation/get_navigation.dart';
-import 'package:nfcpay_structure/base/utils/basic_import.dart';
-import 'package:nfcpay_structure/routes/routes.dart';
+import '../../../base/utils/basic_import.dart';
 
 class ImageWidgets extends StatelessWidget {
   const ImageWidgets({super.key});

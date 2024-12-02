@@ -7,20 +7,7 @@ class FilterMobileScreen extends GetView<FilterController> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: _bodyWidget(context),
-      bottomNavigationBar: Padding(
-        padding: EdgeInsets.symmetric(
-            horizontal: Dimensions.defaultHorizontalSize,
-            vertical: Dimensions.verticalSize),
-        child: PrimaryButton(
-          buttonTextColor: CustomColor.blackColor,
-          buttonColor: CustomColor.primary2,
-          title: Strings.apply,
-          onPressed: () {
-            Get.offNamed(Routes.navigation);
-          },
-          borderColor: CustomColor.primary2,
-        ),
-      ),
+      bottomNavigationBar: ButtonWidget(),
     );
   }
 

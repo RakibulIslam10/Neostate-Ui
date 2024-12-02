@@ -1,4 +1,3 @@
-
 part of 'navigation_screen.dart';
 class NavigationTabletScreen extends GetView<NavigationController> {
   const NavigationTabletScreen({super.key});

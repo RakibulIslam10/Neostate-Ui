@@ -31,6 +31,8 @@ class MyApp extends StatelessWidget {
         getPages: Routes.list,
         themeMode: ThemeMode.light,
 
+
+
         // initialBinding: BindingsBuilder(
         //       () async {
         //     Get.put(SystemMaintenanceController());
@@ -54,6 +56,7 @@ class MyApp extends StatelessWidget {
         //         ),
         //   );
         // },
+
 
       ),
     );

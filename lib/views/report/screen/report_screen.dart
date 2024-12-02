@@ -1,8 +1,5 @@
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:nfcpay_structure/views/report/widget/comment_box_widget.dart';
 import '../../../base/utils/basic_import.dart';
-import '../controller/report_controller.dart';
 part 'report_tablet_screen.dart';
 part 'report_mobile_screen.dart';
 

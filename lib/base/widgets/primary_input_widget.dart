@@ -1,7 +1,4 @@
-import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:get/get.dart';
-
 import '../utils/basic_import.dart';
 
 /// >>> Border Side Style
@@ -97,7 +94,7 @@ class _PrimaryInputWidgetState extends State<PrimaryInputWidget> {
   bool isVisibility = true;
   @override
   Widget build(BuildContext context) {
-    return widget.alignment != null
+    return    widget.alignment != null
         ? Align(
       alignment: widget.alignment ?? Alignment.center,
       child: _buildTextFormFieldWidget(context),
@@ -119,17 +116,9 @@ class _PrimaryInputWidgetState extends State<PrimaryInputWidget> {
 
   _buildDecoration() {
     return InputDecoration(
-      hintText:
-      // DynamicLanguage.isLoading
-      //     ? ''
-      //     :
-      widget.skipEnterText
-              ?
-      // DynamicLanguage.key(
-          widget.hintText
-      // )
-              : "${Strings.enter} ${widget.hintText}",
-
+      hintText: widget.skipEnterText
+          ? widget.hintText
+          : "${Strings.enter} ${widget.hintText}",
       hintStyle: CustomStyle.bodyMedium.copyWith(
         fontWeight: FontWeight.w400,
         color: Color(0xffDDDDDD),
@@ -180,13 +169,13 @@ class _PrimaryInputWidgetState extends State<PrimaryInputWidget> {
                           style: _setFontStyle(),
                           inputFormatters: widget.inputFormatters,
                           obscureText:
-                              widget.isPasswordField ? isVisibility : false,
+                          widget.isPasswordField ? isVisibility : false,
                           textInputAction: TextInputAction.next,
                           keyboardType: widget.textInputType,
                           maxLines: widget.maxLines,
                           decoration: _buildDecoration(),
                           validator:
-                              widget.validatorFunction ?? _setValidator(),
+                          widget.validatorFunction ?? _setValidator(),
                           cursorColor: CustomColor.blackColor,
                           onChanged: widget.onChanged,
                           onTap: () {
@@ -239,10 +228,23 @@ class _PrimaryInputWidgetState extends State<PrimaryInputWidget> {
   _buildTitle() {
     return widget.label != null
         ? Row(
-            mainAxisSize: mainMin,
+      mainAxisSize: mainMin,
+      children: [
+        TextWidget(
+          widget.label!,
+          style: CustomStyle.labelSmall.copyWith(
+            fontWeight: FontWeight.w400,
+          ),
+          color: focusNode!.hasFocus
+              ? Color(0xfff1D1D1D)
+              : Color(0xff949595),
+        ),
+        if (widget.optionalText != '')
+          Row(
             children: [
+              Sizes.width.v5,
               TextWidget(
-                widget.label!,
+                widget.optionalText ?? '',
                 style: CustomStyle.labelSmall.copyWith(
                   fontWeight: FontWeight.w400,
                 ),
@@ -250,23 +252,10 @@ class _PrimaryInputWidgetState extends State<PrimaryInputWidget> {
                     ? Color(0xfff1D1D1D)
                     : Color(0xff949595),
               ),
-              if (widget.optionalText != '')
-                Row(
-                  children: [
-                    Sizes.width.v5,
-                    TextWidget(
-                      widget.optionalText ?? '',
-                      style: CustomStyle.labelSmall.copyWith(
-                        fontWeight: FontWeight.w400,
-                      ),
-                      color: focusNode!.hasFocus
-                          ? Color(0xfff1D1D1D)
-                          : Color(0xff949595),
-                    ),
-                  ],
-                ),
             ],
-          )
+          ),
+      ],
+    )
         : Container();
   }
 
@@ -366,75 +355,75 @@ class _PrimaryInputWidgetState extends State<PrimaryInputWidget> {
     return widget.prefixIcon ??
         (widget.prefixIconPath != ''
             ? Padding(
-                padding: EdgeInsets.symmetric(
-                    horizontal: Dimensions.paddingSize * 0.4),
+          padding: EdgeInsets.symmetric(
+              horizontal: Dimensions.paddingSize * 0.4),
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              CustomImageWidget(
+                path: widget.prefixIconPath!,
+                color: focusNode!.hasFocus ||
+                    widget.controller.text.isNotEmpty
+                    ? CustomColor.typography
+                    : Get.isDarkMode
+                    ? Colors.white
+                    : CustomColor.disableColor,
+              ),
+              Visibility(
+                visible: widget.phoneCode != '',
                 child: Row(
-                  mainAxisSize: MainAxisSize.min,
                   children: [
-                    CustomImageWidget(
-                      path: widget.prefixIconPath!,
-                      color: focusNode!.hasFocus ||
-                              widget.controller.text.isNotEmpty
-                          ? CustomColor.typography
-                          : Get.isDarkMode
-                              ? Colors.white
-                              : CustomColor.disableColor,
-                    ),
-                    Visibility(
-                      visible: widget.phoneCode != '',
-                      child: Row(
-                        children: [
-                          Text(
-                            widget.phoneCode,
-                            style: TextStyle(
-                              fontSize: Dimensions.headlineSmall,
-                              fontWeight: FontWeight.w500,
-                              color: focusNode!.hasFocus
-                                  ? CustomColor.primary
-                                  : CustomColor.typography.withOpacity(0.2),
-                            ),
-                          ).marginOnly(
-                            left: Dimensions.horizontalSize * 0.3,
-                          ),
-                          Container(
-                            margin: EdgeInsets.only(
-                              left: Dimensions.horizontalSize * 0.3,
-                            ),
-                            height: Dimensions.heightSize * 1.5,
-                            width: 1,
-                            color: focusNode!.hasFocus
-                                ? CustomColor.primary
-                                : CustomColor.typography.withOpacity(0.2),
-                          ),
-                        ],
+                    Text(
+                      widget.phoneCode,
+                      style: TextStyle(
+                        fontSize: Dimensions.headlineSmall,
+                        fontWeight: FontWeight.w500,
+                        color: focusNode!.hasFocus
+                            ? CustomColor.primary
+                            : CustomColor.typography.withOpacity(0.2),
                       ),
-                    )
+                    ).marginOnly(
+                      left: Dimensions.horizontalSize * 0.3,
+                    ),
+                    Container(
+                      margin: EdgeInsets.only(
+                        left: Dimensions.horizontalSize * 0.3,
+                      ),
+                      height: Dimensions.heightSize * 1.5,
+                      width: 1,
+                      color: focusNode!.hasFocus
+                          ? CustomColor.primary
+                          : CustomColor.typography.withOpacity(0.2),
+                    ),
                   ],
                 ),
               )
+            ],
+          ),
+        )
             : null);
   }
 
   _setSuffixIcon() {
     return widget.isPasswordField
         ? IconButton(
-            icon: Icon(
-              isVisibility
-                  ? Icons.visibility_off_outlined
-                  : Icons.visibility_outlined,
-              color: focusNode!.hasFocus
-                  ? CustomColor.typography
-                  : Get.isDarkMode
-                      ? CustomColor.typographyDark.withOpacity(0.50)
-                      : CustomColor.disableColor,
-              size: Dimensions.iconSizeDefault,
-            ),
-            onPressed: () {
-              setState(() {
-                isVisibility = !isVisibility;
-              });
-            },
-          )
+      icon: Icon(
+        isVisibility
+            ? Icons.visibility_off_outlined
+            : Icons.visibility_outlined,
+        color: focusNode!.hasFocus
+            ? CustomColor.typography
+            : Get.isDarkMode
+            ? CustomColor.typographyDark.withOpacity(0.50)
+            : CustomColor.disableColor,
+        size: Dimensions.iconSizeDefault,
+      ),
+      onPressed: () {
+        setState(() {
+          isVisibility = !isVisibility;
+        });
+      },
+    )
         : widget.suffixIcon;
   }
 
@@ -442,26 +431,26 @@ class _PrimaryInputWidgetState extends State<PrimaryInputWidget> {
     return widget.isValidator == false
         ? null
         : (String? value) {
-            if (value!.isEmpty) {
-              return Strings.pleaseFillOutTheField;
-            } else {
-              return null;
-            }
-          };
+      if (value!.isEmpty) {
+        return Strings.pleaseFillOutTheField;
+      } else {
+        return null;
+      }
+    };
   }
 
   _buildShapeDecoration(BuildContext context) {
     return focusNode!.hasFocus
         ? widget.customShapeDecoration ??
-            BoxDecoration(
-              color: Theme.of(context).scaffoldBackgroundColor,
-              border: Border.all(width: 1, color: CustomColor.blackColor),
-              borderRadius: BorderRadius.circular(Dimensions.radius * 1.1),
-            )
+        BoxDecoration(
+          color: Theme.of(context).scaffoldBackgroundColor,
+          border: Border.all(width: 1, color: CustomColor.blackColor),
+          borderRadius: BorderRadius.circular(Dimensions.radius * 1.1),
+        )
         : BoxDecoration(
-            color: Theme.of(context).scaffoldBackgroundColor,
-            border: Border.all(width: 1, color: Color(0xffE8E8E8)),
-            borderRadius: BorderRadius.circular(Dimensions.radius * 1.2),
-          );
+      color: Theme.of(context).scaffoldBackgroundColor,
+      border: Border.all(width: 1, color: Color(0xffE8E8E8)),
+      borderRadius: BorderRadius.circular(Dimensions.radius * 1.2),
+    );
   }
 }

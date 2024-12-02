@@ -2,7 +2,6 @@ import 'package:get/get.dart';
 import 'package:nfcpay_structure/bindings/filter_screen_binding.dart';
 import 'package:nfcpay_structure/bindings/navigation_bindings.dart';
 import 'package:nfcpay_structure/bindings/product_details_bindings.dart';
-import 'package:nfcpay_structure/splash/screen/splash_screen.dart';
 import 'package:nfcpay_structure/views/filter/screen/filter_screen.dart';
 import 'package:nfcpay_structure/views/navigation/screen/navigation_screen.dart';
 import 'package:nfcpay_structure/views/product_details/screen/product_details_screen.dart';
@@ -11,6 +10,7 @@ import 'package:nfcpay_structure/views/report/screen/report_screen.dart';
 import '../bindings/product_list_screen_binding.dart';
 import '../bindings/report_screen_binding.dart';
 import '../bindings/splash_binding.dart';
+import '../views/splash/screen/splash_screen.dart';
 part '../routes/route_pages.dart';
 
 class Routes {

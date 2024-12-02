@@ -16,6 +16,7 @@ class ProductListMobileScreen extends GetView<ProductListController> {
         children: [
           TopBar(),
           ProductListWidget(),
+          PrimaryInputWidget(controller: TextEditingController(), hintText: 'hintText')
         ],
       ),
     );

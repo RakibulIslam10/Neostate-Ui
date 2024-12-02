@@ -1,8 +1,5 @@
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:nfcpay_structure/base/utils/basic_import.dart';
-import 'package:nfcpay_structure/views/report/controller/report_controller.dart';
-import '../../../base/widgets/primary_input_widget.dart';
+import 'package:nfcpay_structure/base/widgets/primary_input_widget.dart';
+import '../../../base/utils/basic_import.dart';
 
 class CommentBoxWidget extends GetView<ReportController> {
   CommentBoxWidget({super.key});
