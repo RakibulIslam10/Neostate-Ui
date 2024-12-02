@@ -35,17 +35,16 @@ class Strings {
   static String bookDeal = "Book deal";
   static String allReview = "All review";
   static String reportIssue = "Report issue";
+  static String reportIssueDescription =
+      "Whether restaurant details are incorrect something didn't work or you simply want to give us feedback-we'd love to hear from you and will get back to you as soon as possible your feedback helps us to keep improving the app.";
   static String filter = "Filter";
   static String list = "List  ";
+  static String recommended = "Recommended";
+  static String comment = "Comment";
+  static String submitFeedback = "SUBMIT FEEDBACK";
   static String reset = "Reset";
-
-
-
-
-
-
-
-
+  static String enter = "Enter";
+  static String pleaseFillOutTheField = "Please Fill Out The Field";
 
   static String description =
       "You order 2 pizzas of your the cheaper/equally priced one will not be charged";

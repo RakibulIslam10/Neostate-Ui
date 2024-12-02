@@ -24,19 +24,20 @@ class MapWidget extends GetView<DiscoverController> {
 
   _buttonWidget(BuildContext context) {
     return Positioned(
-        bottom: 75.0,
-        left: 16.0,
-        right: 16.0,
-        child: Row(
-          mainAxisAlignment: mainEnd,
-          children: [
-            _fillerButtonWidget(context),
-            Sizes.width.v5,
-            _listButtonWidget(),
-            Sizes.width.v40,
-            _locationButton(),
-          ],
-        ));
+      bottom: 75.0,
+      left: 16.0,
+      right: 16.0,
+      child: Row(
+        mainAxisAlignment: mainEnd,
+        children: [
+          _fillerButtonWidget(context),
+          Sizes.width.v5,
+          _listButtonWidget(),
+          Sizes.width.v40,
+          _locationButton(),
+        ],
+      ),
+    );
   }
 
   _locationButton() {

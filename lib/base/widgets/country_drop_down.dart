@@ -1,10 +1,5 @@
-// ignore_for_file: library_private_types_in_public_api
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:nfcpay_structure/base/widgets/text_widget.dart';
-
-import '../themes/token.dart';
 import '../utils/basic_import.dart';
 
 abstract class CountryDropdownModel {

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:get/get_state_manager/src/simple/get_view.dart';
+import 'package:get/get.dart';
+import 'package:nfcpay_structure/routes/routes.dart';
 import 'package:nfcpay_structure/views/product_details/controller/product_details_controller.dart';
 import '../../../base/utils/basic_import.dart';
 
@@ -21,24 +22,27 @@ class ContactAndOpeningWidget extends GetView<ProductDetailsController> {
     );
   }
 
-   _reportAndIssue() {
+  _reportAndIssue() {
     return Center(
-        child: Wrap(
-          crossAxisAlignment: WrapCrossAlignment.center,
-          spacing: Dimensions.heightSize * 0.8,
-          children: [
-            Icon(
-              Icons.message,
-              size: Dimensions.iconSizeSmall * 2,
-            ),
-            TextWidget(
-              Strings.reportIssue,
-              fontWeight: FontWeight.w900,
-              fontSize: Dimensions.titleSmall,
-            )
-          ],
-        ),
-      );
+      child: Wrap(
+        crossAxisAlignment: WrapCrossAlignment.center,
+        spacing: Dimensions.heightSize * 0.8,
+        children: [
+          Icon(
+            Icons.message,
+            size: Dimensions.iconSizeSmall * 2,
+          ),
+          TextWidget(
+            onTap: () {
+              Get.toNamed(Routes.reportScreen);
+            },
+            Strings.reportIssue,
+            fontWeight: FontWeight.w900,
+            fontSize: Dimensions.titleSmall,
+          )
+        ],
+      ),
+    );
   }
 
   _openingHours() {

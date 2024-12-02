@@ -6,15 +6,16 @@ class ProductListMobileScreen extends GetView<ProductListController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const CustomAppBar('ProductList Mobile Screen'),
       body: _bodyWidget(context),
     );
   }
 
   _bodyWidget(BuildContext context) {
-    return const SafeArea(
+    return SafeArea(
       child: Column(
         children: [
+          TopBar(),
+          ProductListWidget(),
         ],
       ),
     );

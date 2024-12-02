@@ -1,11 +1,5 @@
-// ignore_for_file: must_be_immutable
-
 import 'package:flutter/material.dart';
-import 'package:nfcpay_structure/base/widgets/text_widget.dart';
-
-import '../themes/token.dart';
 import '../utils/basic_import.dart';
-import 'loader.dart';
 
 class PrimaryButton extends StatelessWidget {
   PrimaryButton({
@@ -48,40 +42,42 @@ class PrimaryButton extends StatelessWidget {
     return isLoading
         ? const Loader()
         : Container(
-      height: height ?? Dimensions.buttonHeight * 0.8,
-      width: double.infinity,
-      padding: padding,
-      child: ElevatedButton(
-        onPressed: disable ? null : onPressed,
-        style: ElevatedButton.styleFrom(
-          padding: padding ?? EdgeInsets.symmetric(horizontal: Dimensions.paddingSize * 0.4),
-          elevation: 0,
-          shape: shape ??
-              RoundedRectangleBorder(
-                borderRadius:
-                BorderRadius.circular(Dimensions.radius * 1.2),
+            height: height ?? Dimensions.buttonHeight * 0.8,
+            width: double.infinity,
+            padding: padding,
+            child: ElevatedButton(
+              onPressed: disable ? null : onPressed,
+              style: ElevatedButton.styleFrom(
+                padding: padding ??
+                    EdgeInsets.symmetric(
+                        horizontal: Dimensions.paddingSize * 0.4),
+                elevation: 0,
+                shape: shape ??
+                    RoundedRectangleBorder(
+                      borderRadius:
+                          BorderRadius.circular(Dimensions.radius * 1.2),
+                    ),
+                backgroundColor:
+                    disable ? CustomColor.disableColor : buttonColor,
+                side: BorderSide(
+                  width: borderWidth,
+                  color: disable
+                      ? CustomColor.disableColor
+                      : borderColor ?? CustomColor.primary,
+                ),
               ),
-          backgroundColor:
-          disable ? CustomColor.disableColor : buttonColor,
-          side: BorderSide(
-            width: borderWidth,
-            color: disable
-                ? CustomColor.disableColor
-                : borderColor ?? CustomColor.primary,
-          ),
-        ),
-        child: TextWidget(
-          title,
-          fontSize: fontSize ?? Dimensions.titleMedium,
-          fontWeight: fontWeight ?? FontWeight.w700,
-          color: primary
-              ? CustomColor.primary
-              : buttonTextColor ?? Colors.white,
-          maxLines: 1,
-          textOverflow: TextOverflow.ellipsis,
-          textAlign: TextAlign.center,
-        ),
-      ),
-    );
+              child: TextWidget(
+                title,
+                fontSize: fontSize ?? Dimensions.titleMedium,
+                fontWeight: fontWeight ?? FontWeight.w700,
+                color: primary
+                    ? CustomColor.primary
+                    : buttonTextColor ?? Colors.black.withOpacity(0.25),
+                maxLines: 1,
+                textOverflow: TextOverflow.ellipsis,
+                textAlign: TextAlign.center,
+              ),
+            ),
+          );
   }
 }

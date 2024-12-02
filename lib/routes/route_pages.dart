@@ -27,5 +27,10 @@ class RoutePageList {
       page: () => ProductListScreen(),
       binding: ProductListScreenBinding(),
     ),
+    GetPage(
+      name: Routes.reportScreen,
+      page: () => ReportScreen(),
+      binding: ReportScreenBinding(),
+    ),
   ];
 }
