@@ -17,6 +17,22 @@ class MapWidget extends GetView<DiscoverController> {
     );
   }
 
+  _googleMap() {
+    return Obx(() {
+      return GoogleMap(
+        initialCameraPosition: CameraPosition(
+          target:
+              LatLng(controller.myLatitude.value, controller.myLongitude.value),
+          zoom: 14.0,
+        ),
+        markers: controller.markers.toSet(),
+        onTap: (LatLng position) {
+          controller.addMarker(position);
+        },
+      );
+    });
+  }
+
   _buttonWidget(BuildContext context) {
     return Positioned(
       bottom: 75.0,
@@ -37,8 +53,8 @@ class MapWidget extends GetView<DiscoverController> {
 
   _locationButton() {
     return InkWell(
-      onTap: () {
-        controller.getCurrentLocation();
+      onTap: ()  {
+   controller.determinePosition();
       },
       child: Container(
         padding: EdgeInsets.all(Dimensions.paddingSize * 0.4),
@@ -60,45 +76,14 @@ class MapWidget extends GetView<DiscoverController> {
   }
 
   _productCard() {
-    return Obx(() {
-      return controller.isFoodCardVisible.value
-          ? Positioned(
-              bottom: 140.0,
-              left: 16.0,
-              right: 16.0,
-              child: FoodCardWidget(),
-            )
-          : const SizedBox.shrink();
-    });
-  }
-
-  _googleMap() {
-    return Obx(
-      () {
-        final latitude = controller.myLatitude.value;
-        final longitude = controller.myLongitude.value;
-
-        return GoogleMap(
-          initialCameraPosition: CameraPosition(
-            target: LatLng(latitude, longitude),
-            zoom: 14.0,
-          ),
-          markers: {
-            Marker(
-              markerId: MarkerId('currentLocation'),
-              position: LatLng(latitude, longitude),
-              infoWindow: InfoWindow(
-                title: Strings.location,
-                snippet: Strings.myCurrentLocation,
-              ),
-            ),
-          },
-          onMapCreated: (GoogleMapController mapController) {
-            // You can do additional map setup here if needed
-          },
-        );
-      },
-    );
+    return Obx(() => controller.isFoodCardVisible.value
+        ? Positioned(
+            bottom: 140.0,
+            left: 16.0,
+            right: 16.0,
+            child: FoodCardWidget(),
+          )
+        : SizedBox());
   }
 
   _fillerButtonWidget(context) {

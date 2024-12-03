@@ -15,6 +15,8 @@ class ReportMobileScreen extends GetView<ReportController> {
     );
   }
 
+
+
   _bodyWidget(BuildContext context) {
     return SafeArea(
       child: Column(
