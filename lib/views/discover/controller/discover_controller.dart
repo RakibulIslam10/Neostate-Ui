@@ -4,9 +4,20 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 import '../../../languages/strings.dart';
 
 class DiscoverController extends GetxController {
-
   RxString countrySelectMethod = 'Select City'.obs;
-  List<dynamic> countryList = [];
+  List<String> countryList = [
+    'Bangladesh',
+    'India',
+    'United States',
+    'Canada',
+    'Australia',
+    'United Kingdom',
+    'Germany',
+    'France',
+    'Japan',
+    'Brazil'
+  ];
+
   RxString cardImage =
       'https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500'
           .obs;
@@ -31,43 +42,32 @@ class DiscoverController extends GetxController {
     markers.add(marker);
   }
 
-
-
-
-
-
   Position? currentLocation;
 
-  Future<Position> determinePosition()async{
+  Future<Position> determinePosition() async {
     bool serviceEnabled;
     LocationPermission permission;
 
     serviceEnabled = await Geolocator.isLocationServiceEnabled();
-    if(!serviceEnabled){
+    if (!serviceEnabled) {
       return Future.error('Location service are disable');
     }
     permission = await Geolocator.checkPermission();
-    if(permission == LocationPermission.denied){
+    if (permission == LocationPermission.denied) {
       permission = await Geolocator.requestPermission();
-      if(permission == LocationPermission.denied){
+      if (permission == LocationPermission.denied) {
         return Future.error("Location permissions are denied");
-      }else{
+      } else {
         myLatitude.value = currentLocation!.latitude;
         myLongitude.value = currentLocation!.longitude;
         print(myLongitude.value);
         print(myLatitude.value);
       }
     }
-    if(permission == LocationPermission.deniedForever){
-      return Future.error('Location permissions are permanently denied , we cannot request permissions');
+    if (permission == LocationPermission.deniedForever) {
+      return Future.error(
+          'Location permissions are permanently denied , we cannot request permissions');
     }
     return await Geolocator.getCurrentPosition();
   }
-
-
-
-
-
-
 }
-

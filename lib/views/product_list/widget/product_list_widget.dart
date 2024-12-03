@@ -1,18 +1,25 @@
 import '../../../base/utils/basic_import.dart';
+import '../controller/product_list_controller.dart';
 
-class ProductListWidget extends GetView<DiscoverController> {
+class ProductListWidget extends GetView<ProductListController> {
   const ProductListWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Expanded(
-      child: ListView(
-          children: List.generate(
-        10,
-        (index) {
-          return _listCardWidget(context);
-        },
-      )),
+      child: CustomScrollView(
+        // controller: controller.scrollController,
+        slivers: [
+          SliverList(
+            delegate: SliverChildBuilderDelegate(
+              (BuildContext context, int index) {
+                return _listCardWidget(context);
+              },
+              childCount: 50,
+            ),
+          ),
+        ],
+      ),
     );
   }
 

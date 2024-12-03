@@ -7,7 +7,7 @@ class DayButtonWidget extends GetView<FilterController> {
   Widget build(BuildContext context) {
     return Padding(
       padding:
-          EdgeInsets.symmetric(horizontal: Dimensions.defaultHorizontalSize),
+          EdgeInsets.symmetric(horizontal: Dimensions.horizontalSize * 0.5,),
       child: Column(
         crossAxisAlignment: crossStart,
         children: [

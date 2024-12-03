@@ -6,14 +6,13 @@ class TextHeadingWidget extends GetView<ProductDetailsController> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding:  EdgeInsets.symmetric(horizontal: Dimensions.defaultHorizontalSize),
+      padding: EdgeInsets.symmetric(horizontal: Dimensions.horizontalSize * 0.5),
       child: Column(
         crossAxisAlignment: crossStart,
         children: [
           TextWidget(
-
             Strings.pizzeriaMimmo,
-            fontSize: Dimensions.titleLarge * 2,
+            fontSize: Dimensions.titleLarge * 1.7,
             fontWeight: FontWeight.w900,
           ),
           TextWidget(Strings.italianPastaPizza),

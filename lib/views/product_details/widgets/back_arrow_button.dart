@@ -5,15 +5,17 @@ class BackArrowButton extends GetView<ProductDetailsController> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: EdgeInsets.all(Dimensions.paddingSize * 0.4),
-      decoration:
-      BoxDecoration(shape: BoxShape.circle, color: CustomColor.whiteColor),
-      child: BackButtonWidget(
-        onTap: () {
-          Get.off(Routes.navigation);
-        },
-      ),
+    return InkWell(
+      splashColor: Colors.transparent,
+      highlightColor: Colors.transparent,
+      onTap: () {
+        Get.offNamed(Routes.navigation);
+      },
+      child: Container(
+          margin: EdgeInsets.all(Dimensions.paddingSize * 0.25),
+          decoration: BoxDecoration(
+              shape: BoxShape.circle, color: CustomColor.whiteColor),
+          child: Icon(Icons.arrow_back)),
     );
   }
 }

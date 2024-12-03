@@ -15,8 +15,8 @@ class CommentBoxWidget extends GetView<ReportController> {
               EdgeInsets.symmetric(vertical: Dimensions.verticalSize * 0.5),
         ),
         Padding(
-          padding: EdgeInsets.symmetric(
-              horizontal: Dimensions.defaultHorizontalSize),
+          padding:
+              EdgeInsets.symmetric(horizontal: Dimensions.horizontalSize * 0.5),
           child: PrimaryInputWidget(
               maxLines: 4,
               controller: controller.commentController,

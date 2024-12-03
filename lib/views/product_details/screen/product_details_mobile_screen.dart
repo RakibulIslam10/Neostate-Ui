@@ -9,24 +9,26 @@ class ProductDetailsMobileScreen extends GetView<ProductDetailsController> {
       body: _bodyWidget(context),
     );
   }
+
   _bodyWidget(BuildContext context) {
     return SafeArea(
-      child: Stack(
-        children: [
-          ListView(
-            children: [
-              ImageWidgets(),
-              TextHeadingWidget(),
-              MenuButtonWidget(),
-              InfoBoxWidget(Strings.twoForOne, Strings.description),
-              InfoBoxWidget(Strings.twoForOneHotDrink, Strings.description2),
-              RatingReviewsWidget(),
-              CommentsSectionWidget(),
-              LocationMapWidget(),
-              ContactAndOpeningWidget(),
-            ],
+      child: CustomScrollView(
+        slivers: [
+          ImageWidgets(),
+          SliverList(
+            delegate: SliverChildListDelegate(
+              [
+                TextHeadingWidget(),
+                MenuButtonWidget(),
+                InfoBoxWidget(Strings.twoForOne, Strings.description),
+                InfoBoxWidget(Strings.twoForOneHotDrink, Strings.description2),
+                RatingReviewsWidget(),
+                CommentsSectionWidget(),
+                LocationMapWidget(),
+                ContactAndOpeningWidget(),
+              ],
+            ),
           ),
-          BackArrowButton()
         ],
       ),
     );

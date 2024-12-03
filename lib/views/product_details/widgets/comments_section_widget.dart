@@ -11,7 +11,7 @@ class CommentsSectionWidget extends GetView<ProductDetailsController> {
           3,
               (index) {
             return Padding(
-              padding: EdgeInsets.symmetric(horizontal: Dimensions.defaultHorizontalSize),
+              padding: EdgeInsets.symmetric( horizontal: Dimensions.defaultHorizontalSize * 0.5,),
               child: Column(
                 crossAxisAlignment: crossStart,
                 children: [
@@ -71,9 +71,9 @@ class CommentsSectionWidget extends GetView<ProductDetailsController> {
    _buttonWidget() {
     return Padding(
         padding: EdgeInsets.only(
-          left: Dimensions.defaultHorizontalSize,
+          left: Dimensions.defaultHorizontalSize * 0.5,
           top: Dimensions.verticalSize * 0.6,
-          right: Dimensions.defaultHorizontalSize,
+          right: Dimensions.defaultHorizontalSize * 0.5,
         ),
         child: PrimaryButton(
           borderColor: CustomColor.blackColor.withOpacity(0.1),

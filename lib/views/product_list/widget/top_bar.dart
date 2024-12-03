@@ -1,6 +1,8 @@
+import 'package:nfcpay_structure/views/product_list/controller/product_list_controller.dart';
+
 import '../../../base/utils/basic_import.dart';
 
-class TopBar extends GetView<DiscoverController> {
+class TopBar extends GetView<ProductListController> {
   TopBar({super.key});
 
   @override
@@ -22,7 +24,7 @@ class TopBar extends GetView<DiscoverController> {
               Expanded(
                 child: CountryDropDown(
                     fieldPadding: EdgeInsets.only(
-                        right: MediaQuery.of(context).size.width * 0.4),
+                        right: MediaQuery.of(context).size.width * 0.38),
                     decoration: BoxDecoration(),
                     dropdownIconColor: CustomColor.blackColor,
                     inputBoxHeight: Dimensions.inputBoxHeight * 0.8,

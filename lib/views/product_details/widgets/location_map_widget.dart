@@ -10,17 +10,17 @@ class LocationMapWidget extends GetView<ProductDetailsController> {
       children: [
         Sizes.height.v10,
         Padding(
-          padding: EdgeInsets.only(left: Dimensions.horizontalSize),
+          padding: EdgeInsets.only(left: Dimensions.defaultHorizontalSize * 0.5,),
           child: Wrap(
             children: [
             Icon(Icons.location_pin,),
             TextWidget(
-              padding: EdgeInsets.only(left: Dimensions.horizontalSize *0.5),
+              padding: EdgeInsets.only(left: Dimensions.horizontalSize *0.25),
               Strings.location,fontWeight: FontWeight.bold,),
           ],),
         ),
         TextWidget(
-          padding: EdgeInsets.only(left: Dimensions.horizontalSize * 2.5),
+          padding: EdgeInsets.only(left: Dimensions.horizontalSize * 1.5),
           Strings.address,fontSize: Dimensions.titleSmall,),
         Sizes.height.v10,
         SizedBox(

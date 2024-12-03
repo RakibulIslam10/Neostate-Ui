@@ -7,7 +7,7 @@ class ButtonWidget extends GetView<FilterController> {
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.symmetric(
-          horizontal: Dimensions.defaultHorizontalSize,
+          horizontal: Dimensions.horizontalSize * 0.5,
           vertical: Dimensions.verticalSize),
       child: PrimaryButton(
         buttonTextColor: CustomColor.blackColor,

@@ -11,7 +11,6 @@ class ContactAndOpeningWidget extends GetView<ProductDetailsController> {
         _contactWidget(),
         _openingHours(),
         _reportAndIssue(),
-
       ],
     );
   }
@@ -47,14 +46,18 @@ class ContactAndOpeningWidget extends GetView<ProductDetailsController> {
       crossAxisAlignment: crossStart,
       children: [
         Padding(
-          padding: EdgeInsets.only(left: Dimensions.horizontalSize),
+          padding: EdgeInsets.only(
+            left: Dimensions.defaultHorizontalSize * 0.5,
+          ),
           child: Wrap(
             children: [
               Icon(
                 Icons.access_time_sharp,
               ),
               TextWidget(
-                padding: EdgeInsets.only(left: Dimensions.horizontalSize * 0.5),
+                padding: EdgeInsets.only(
+                  left: Dimensions.defaultHorizontalSize * 0.5,
+                ),
                 Strings.openingHours,
                 fontWeight: FontWeight.bold,
               ),
@@ -63,7 +66,7 @@ class ContactAndOpeningWidget extends GetView<ProductDetailsController> {
         ),
         Padding(
             padding: EdgeInsets.only(
-                left: Dimensions.horizontalSize * 2.5,
+                left: Dimensions.horizontalSize * 1.6,
                 right: Dimensions.defaultHorizontalSize),
             child: Column(
               children: List.generate(
@@ -101,14 +104,17 @@ class ContactAndOpeningWidget extends GetView<ProductDetailsController> {
       children: [
         Padding(
           padding: EdgeInsets.only(
-              left: Dimensions.horizontalSize, top: Dimensions.heightSize),
+              left: Dimensions.defaultHorizontalSize * 0.5,
+              top: Dimensions.heightSize),
           child: Wrap(
             children: [
               Icon(
                 Icons.phone,
               ),
               TextWidget(
-                padding: EdgeInsets.only(left: Dimensions.horizontalSize * 0.5),
+                padding: EdgeInsets.only(
+                  left: Dimensions.defaultHorizontalSize * 0.5,
+                ),
                 Strings.contact,
                 fontWeight: FontWeight.bold,
               ),
@@ -116,7 +122,7 @@ class ContactAndOpeningWidget extends GetView<ProductDetailsController> {
           ),
         ),
         TextWidget(
-          padding: EdgeInsets.only(left: Dimensions.horizontalSize * 2.5),
+          padding: EdgeInsets.only(left: Dimensions.horizontalSize * 1.6),
           Strings.number,
           fontSize: Dimensions.titleSmall,
         ),

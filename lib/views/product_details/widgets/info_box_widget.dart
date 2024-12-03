@@ -10,7 +10,7 @@ class InfoBoxWidget extends GetView<ProductDetailsController> {
   Widget build(BuildContext context) {
     return Container(
       margin: EdgeInsets.symmetric(
-          horizontal: Dimensions.defaultHorizontalSize,
+          horizontal: Dimensions.defaultHorizontalSize * 0.5,
           vertical: Dimensions.verticalSize * 0.5),
       padding: EdgeInsets.symmetric(
           horizontal: Dimensions.defaultHorizontalSize * 0.5,

@@ -33,7 +33,7 @@ class ReportMobileScreen extends GetView<ReportController> {
   _buttonWidget() {
     return PrimaryButton(
       padding: EdgeInsets.symmetric(
-        horizontal: Dimensions.defaultHorizontalSize * 0.5,
+        horizontal: Dimensions.horizontalSize * 0.5,
       ),
       disable: true,
       borderColor: CustomColor.disableColor,

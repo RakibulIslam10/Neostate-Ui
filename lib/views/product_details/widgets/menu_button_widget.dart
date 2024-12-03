@@ -7,7 +7,7 @@ class MenuButtonWidget extends GetView<ProductDetailsController> {
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.symmetric(
-          horizontal: Dimensions.defaultHorizontalSize,
+          horizontal: Dimensions.defaultHorizontalSize * 0.5,
           vertical: Dimensions.verticalSize * 0.4),
       child: Row(
         mainAxisAlignment: mainSpaceBet,
