@@ -27,7 +27,7 @@ class ProductListWidget extends GetView<DiscoverController> {
         alignment: Alignment.center,
         padding: EdgeInsets.symmetric(
             vertical: Dimensions.verticalSize * 0.4,
-            horizontal: Dimensions.heightSize * 0.5),
+            horizontal: Dimensions.horizontalSize * 0.5),
         color: CustomColor.whiteColor,
         child: Column(
           children: [
@@ -35,10 +35,10 @@ class ProductListWidget extends GetView<DiscoverController> {
               children: [
                 CustomImageWidget(
                   path:
-                      'https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
+                      'https://www.foodiesfeed.com/wp-content/uploads/2023/06/burger-with-melted-cheese.jpg',
                   height: MediaQuery.of(context).size.height * 0.1,
-                  width: MediaQuery.of(context).size.height * 0.16,
-                  borderRadius: BorderRadius.circular(Dimensions.radius * 1.5),
+                  width: MediaQuery.of(context).size.height * 0.1,
+                  borderRadius: BorderRadius.circular(Dimensions.radius * 1.6),
                 ),
                 Sizes.width.v10,
                 Column(

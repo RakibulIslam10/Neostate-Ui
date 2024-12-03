@@ -19,13 +19,12 @@ class FoodCardWidget extends GetView<DiscoverController> {
                 splashColor: Colors.transparent,
                 highlightColor: Colors.transparent,
                 child: Container(
-                  margin:
-                      EdgeInsets.only(right: Dimensions.horizontalSize * 0.5),
+                  margin: EdgeInsets.only(right: Dimensions.horizontalSize * 0.5),
                   alignment: Alignment.center,
                   height: MediaQuery.of(context).size.height * 0.12,
                   padding: EdgeInsets.symmetric(
                       vertical: Dimensions.verticalSize * 0.4,
-                      horizontal: Dimensions.heightSize * 0.5),
+                      horizontal: Dimensions.horizontalSize * 0.5),
                   decoration: BoxDecoration(
                     borderRadius:
                         BorderRadius.circular(Dimensions.radius * 0.8),
@@ -35,11 +34,11 @@ class FoodCardWidget extends GetView<DiscoverController> {
                     children: [
                       CustomImageWidget(
                         path:
-                            'https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
+                            'https://www.foodiesfeed.com/wp-content/uploads/2023/06/burger-with-melted-cheese.jpg',
                         height: MediaQuery.of(context).size.height * 0.1,
-                        width: MediaQuery.of(context).size.height * 0.16,
+                        width: MediaQuery.of(context).size.height * 0.1,
                         borderRadius:
-                            BorderRadius.circular(Dimensions.radius * 1.5),
+                            BorderRadius.circular(Dimensions.radius * 1.6),
                       ),
                       Sizes.width.v10,
                       Column(

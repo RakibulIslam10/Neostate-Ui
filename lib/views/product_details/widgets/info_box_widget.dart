@@ -56,9 +56,14 @@ class InfoBoxWidget extends GetView<ProductDetailsController> {
         vertical: Dimensions.verticalSize * 0.1,
       ),
       decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(Dimensions.radius * 2),
-          border: Border.fromBorderSide(
-              BorderSide(color: CustomColor.disableColor))),
+        borderRadius: BorderRadius.circular(Dimensions.radius * 2),
+        border: Border.fromBorderSide(
+          BorderSide(
+            width: 2,
+            color: CustomColor.disableColor.withOpacity(0.4),
+          ),
+        ),
+      ),
       child: Row(
         mainAxisAlignment: mainCenter,
         children: [

@@ -9,34 +9,35 @@ class ContactAndOpeningWidget extends GetView<ProductDetailsController> {
       crossAxisAlignment: crossStart,
       children: [
         _contactWidget(),
-        Sizes.height.v10,
         _openingHours(),
-        Sizes.height.v10,
         _reportAndIssue(),
-        Sizes.height.v30,
+
       ],
     );
   }
 
   _reportAndIssue() {
     return Center(
-      child: Wrap(
-        crossAxisAlignment: WrapCrossAlignment.center,
-        spacing: Dimensions.heightSize * 0.8,
-        children: [
-          Icon(
-            Icons.message,
-            size: Dimensions.iconSizeSmall * 2,
-          ),
-          TextWidget(
-            onTap: () {
-              Get.toNamed(Routes.reportScreen);
-            },
-            Strings.reportIssue,
-            fontWeight: FontWeight.w900,
-            fontSize: Dimensions.titleSmall,
-          )
-        ],
+      child: Padding(
+        padding: EdgeInsets.only(bottom: Dimensions.verticalSize),
+        child: Wrap(
+          crossAxisAlignment: WrapCrossAlignment.center,
+          spacing: Dimensions.heightSize * 0.8,
+          children: [
+            Icon(
+              Icons.message,
+              size: Dimensions.iconSizeSmall * 2,
+            ),
+            TextWidget(
+              onTap: () {
+                Get.toNamed(Routes.reportScreen);
+              },
+              Strings.reportIssue,
+              fontWeight: FontWeight.w900,
+              fontSize: Dimensions.titleSmall,
+            )
+          ],
+        ),
       ),
     );
   }
@@ -89,6 +90,7 @@ class ContactAndOpeningWidget extends GetView<ProductDetailsController> {
                 },
               ),
             )),
+        Sizes.height.v10,
       ],
     );
   }
@@ -114,10 +116,11 @@ class ContactAndOpeningWidget extends GetView<ProductDetailsController> {
           ),
         ),
         TextWidget(
-          padding: EdgeInsets.only(left: Dimensions.horizontalSize * 2),
+          padding: EdgeInsets.only(left: Dimensions.horizontalSize * 2.5),
           Strings.number,
           fontSize: Dimensions.titleSmall,
         ),
+        Sizes.height.v10,
       ],
     );
   }

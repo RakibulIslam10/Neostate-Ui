@@ -1,3 +1,4 @@
+import 'package:nfcpay_structure/views/product_details/widgets/back_arrow_button.dart';
 import 'package:nfcpay_structure/views/product_details/widgets/comments_section_widget.dart';
 import 'package:nfcpay_structure/views/product_details/widgets/contact_and_opening_widget.dart';
 import 'package:nfcpay_structure/views/product_details/widgets/image_widgets.dart';

@@ -53,8 +53,8 @@ class MapWidget extends GetView<DiscoverController> {
 
   _locationButton() {
     return InkWell(
-      onTap: ()  {
-   controller.determinePosition();
+      onTap: () {
+        controller.determinePosition();
       },
       child: Container(
         padding: EdgeInsets.all(Dimensions.paddingSize * 0.4),
@@ -153,7 +153,7 @@ class MapWidget extends GetView<DiscoverController> {
         child: Wrap(
           spacing: Dimensions.heightSize * 0.5,
           children: [
-            Icon(Icons.menu),
+            Icon(Icons.list),
             TextWidget(
               Strings.list,
               fontWeight: FontWeight.bold,

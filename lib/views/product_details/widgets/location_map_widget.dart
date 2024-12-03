@@ -20,7 +20,7 @@ class LocationMapWidget extends GetView<ProductDetailsController> {
           ],),
         ),
         TextWidget(
-          padding: EdgeInsets.only(left: Dimensions.horizontalSize * 2),
+          padding: EdgeInsets.only(left: Dimensions.horizontalSize * 2.5),
           Strings.address,fontSize: Dimensions.titleSmall,),
         Sizes.height.v10,
         SizedBox(
