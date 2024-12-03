@@ -70,7 +70,8 @@ class MapWidget extends GetView<DiscoverController> {
           shape: BoxShape.circle,
           color: CustomColor.whiteColor,
         ),
-        child: Icon(Icons.location_pin),
+        child: Icon(Icons.navigation)
+
       ),
     );
   }
@@ -79,8 +80,6 @@ class MapWidget extends GetView<DiscoverController> {
     return Obx(() => controller.isFoodCardVisible.value
         ? Positioned(
             bottom: 140.0,
-            left: 16.0,
-            right: 16.0,
             child: FoodCardWidget(),
           )
         : SizedBox());
@@ -95,8 +94,8 @@ class MapWidget extends GetView<DiscoverController> {
       },
       child: Container(
         padding: EdgeInsets.symmetric(
-            vertical: Dimensions.verticalSize * 0.3,
-            horizontal: Dimensions.heightSize),
+            vertical: Dimensions.verticalSize * 0.5,
+            horizontal: Dimensions.horizontalSize * 0.8),
         decoration: BoxDecoration(
           color: CustomColor.whiteColor,
           borderRadius: BorderRadius.only(
@@ -135,8 +134,8 @@ class MapWidget extends GetView<DiscoverController> {
       },
       child: Container(
         padding: EdgeInsets.symmetric(
-            vertical: Dimensions.verticalSize * 0.3,
-            horizontal: Dimensions.heightSize),
+            vertical: Dimensions.verticalSize * 0.5,
+            horizontal: Dimensions.horizontalSize *0.8),
         decoration: BoxDecoration(
             boxShadow: [
               BoxShadow(
