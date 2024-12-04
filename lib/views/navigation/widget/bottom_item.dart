@@ -21,10 +21,16 @@ class BottomItem extends StatelessWidget {
           child: Column(
             mainAxisAlignment: mainCenter,
             children: [
-              Icon(icon,
-                  color: controller.selectedIndex.value == index
-                      ? CustomColor.blackColor
-                      : CustomColor.blackColor.withOpacity(0.5)),
+              Icon(
+                icon,
+                color: controller.selectedIndex.value == index
+                    ? (index == 1
+                        ? CustomColor.whiteColor
+                        : CustomColor.blackColor)
+                    : (index == 1
+                        ? CustomColor.disableColor
+                        : CustomColor.disableColor),
+              ),
               TextWidget(
                 label,
                 style: TextStyle(
@@ -32,7 +38,9 @@ class BottomItem extends StatelessWidget {
                   fontWeight: FontWeight.w900,
                 ),
                 color: controller.selectedIndex.value == index
-                    ? CustomColor.blackColor
+                    ? (index == 1
+                        ? CustomColor.whiteColor
+                        : CustomColor.blackColor)
                     : CustomColor.disableColor,
               ),
               Sizes.height.v5,

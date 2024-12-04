@@ -7,30 +7,41 @@ class MapWidget extends GetView<DiscoverController> {
   @override
   Widget build(BuildContext context) {
     return Expanded(
-      child: Stack(
+        child: Obx(
+      () => Stack(
+        alignment: Alignment.bottomCenter,
         children: [
           _googleMap(),
-          _productCard(),
+          if (controller.isFoodCardVisible.value == true) ...[
+            _foodCard(context),
+          ],
           _buttonWidget(context),
         ],
       ),
+    ));
+  }
+
+  _foodCard(BuildContext context) {
+    return Padding(
+      padding:
+          EdgeInsets.only(bottom: MediaQuery.of(context).size.height * 0.16),
+      child: FoodCardWidget(),
     );
   }
 
   _googleMap() {
-    return Obx(() {
-      return GoogleMap(
-        initialCameraPosition: CameraPosition(
-          target:
-              LatLng(controller.myLatitude.value, controller.myLongitude.value),
-          zoom: 14.0,
-        ),
-        markers: controller.markers.toSet(),
-        onTap: (LatLng position) {
-          controller.addMarker(position);
-        },
-      );
-    });
+    return GoogleMap(
+      initialCameraPosition: CameraPosition(
+        target: controller.initialLatLng.value,
+        zoom: 12.0,
+      ),
+      markers: controller.markers,
+      onMapCreated: (GoogleMapController googleMapController) {
+        // googleMapController.animateCamera(
+        //   CameraUpdate.newLatLng(controller.userLocation.value),
+        // );
+      },
+    );
   }
 
   _buttonWidget(BuildContext context) {
@@ -57,32 +68,21 @@ class MapWidget extends GetView<DiscoverController> {
         controller.determinePosition();
       },
       child: Container(
-        padding: EdgeInsets.all(Dimensions.paddingSize * 0.4),
-        decoration: BoxDecoration(
-          boxShadow: [
-            BoxShadow(
-              color: Colors.black.withOpacity(0.1),
-              blurRadius: 8,
-              spreadRadius: 2,
-              offset: Offset(0, 4),
-            ),
-          ],
-          shape: BoxShape.circle,
-          color: CustomColor.whiteColor,
-        ),
-        child: Icon(Icons.navigation)
-
-      ),
+          padding: EdgeInsets.all(Dimensions.paddingSize * 0.4),
+          decoration: BoxDecoration(
+            boxShadow: [
+              BoxShadow(
+                color: Colors.black.withOpacity(0.1),
+                blurRadius: 8,
+                spreadRadius: 2,
+                offset: Offset(0, 4),
+              ),
+            ],
+            shape: BoxShape.circle,
+            color: CustomColor.whiteColor,
+          ),
+          child: Icon(Icons.navigation)),
     );
-  }
-
-  _productCard() {
-    return Obx(() => controller.isFoodCardVisible.value
-        ? Positioned(
-            bottom: 140.0,
-            child: FoodCardWidget(),
-          )
-        : SizedBox());
   }
 
   _fillerButtonWidget(context) {
@@ -135,7 +135,7 @@ class MapWidget extends GetView<DiscoverController> {
       child: Container(
         padding: EdgeInsets.symmetric(
             vertical: Dimensions.verticalSize * 0.5,
-            horizontal: Dimensions.horizontalSize *0.8),
+            horizontal: Dimensions.horizontalSize * 0.8),
         decoration: BoxDecoration(
             boxShadow: [
               BoxShadow(

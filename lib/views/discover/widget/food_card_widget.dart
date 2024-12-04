@@ -87,8 +87,9 @@ class FoodCardWidget extends GetView<DiscoverController> {
   _pizzaButton(BuildContext context) {
     return Container(
       alignment: Alignment.center,
-      height: Dimensions.heightSize * 2.5,
-      width: MediaQuery.of(context).size.width * 0.2,
+      padding: EdgeInsets.symmetric(
+          horizontal: Dimensions.horizontalSize * 0.4,
+          vertical: Dimensions.heightSize * 0.5),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(Dimensions.radius * 2),
         color: CustomColor.primary,
@@ -104,8 +105,9 @@ class FoodCardWidget extends GetView<DiscoverController> {
   _drinkButton(BuildContext context) {
     return Container(
       alignment: Alignment.center,
-      height: Dimensions.heightSize * 2.5,
-      width: MediaQuery.of(context).size.width * 0.2,
+      padding: EdgeInsets.symmetric(
+          horizontal: Dimensions.horizontalSize * 0.4,
+          vertical: Dimensions.heightSize * 0.5),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(Dimensions.radius * 2),
         color: CustomColor.primary,

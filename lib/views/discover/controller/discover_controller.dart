@@ -1,10 +1,13 @@
 import 'package:geolocator/geolocator.dart';
 import 'package:get/get.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import '../../../languages/strings.dart';
 
 class DiscoverController extends GetxController {
   RxString countrySelectMethod = 'Select City'.obs;
+  var isFoodCardVisible = false.obs;
+  var initialLatLng = LatLng(23.8103, 90.4125).obs;
+  Rx<LatLng> userLocation = LatLng(0.0, 0.0).obs;
+
   List<String> countryList = [
     'Bangladesh',
     'India',
@@ -18,28 +21,47 @@ class DiscoverController extends GetxController {
     'Brazil'
   ];
 
-  RxString cardImage =
-      'https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500'
-          .obs;
-  RxDouble myLatitude = 23.837355265297.obs;
-  RxDouble myLongitude = 90.366232925743.obs;
+  @override
+  void onInit() {
+    super.onInit();
+    _loadMarkers();
+  }
 
-  var isFoodCardVisible = false.obs;
-  var markers = <Marker>{}.obs;
+  final RxSet<Marker> markers = <Marker>{}.obs;
 
-  void addMarker(LatLng position) {
-    final marker = Marker(
-      markerId: MarkerId(position.toString()),
-      position: position,
-      infoWindow: InfoWindow(
-        title: Strings.location,
-        snippet: Strings.myCurrentLocation,
-        onTap: () {
-          isFoodCardVisible.value = true;
-        },
-      ),
-    );
-    markers.add(marker);
+  void _loadMarkers() {
+    final List<Map<String, dynamic>> locations = [
+      {"position": LatLng(23.8103, 90.4125), "name": "Dhaka City Center"},
+      {"position": LatLng(23.7925, 90.4078), "name": "Dhanmondi"},
+      {"position": LatLng(23.7809, 90.2792), "name": "Uttara"},
+      {"position": LatLng(23.7515, 90.3775), "name": "Gulshan"},
+      {"position": LatLng(23.7623, 90.4255), "name": "Banani"},
+      {"position": LatLng(23.7748, 90.3654), "name": "Mohakhali"},
+      {"position": LatLng(23.7465, 90.3760), "name": "Tejgaon"},
+      {"position": LatLng(23.7372, 90.3951), "name": "Shahbagh"},
+      {"position": LatLng(23.7057, 90.3563), "name": "Jatrabari"},
+      {"position": LatLng(23.7284, 90.4093), "name": "Old Dhaka"},
+    ];
+
+    for (int i = 0; i < locations.length; i++) {
+      final location = locations[i];
+      markers.add(
+        Marker(
+          markerId: MarkerId('marker_$i'),
+          position: location["position"],
+          infoWindow: InfoWindow(
+            title: location["name"],
+            snippet: 'A popular spot in Dhaka',
+            onTap: () {
+              isFoodCardVisible.value = true;
+            },
+          ),
+          onTap: () {
+            markers.refresh();
+          },
+        ),
+      );
+    }
   }
 
   Position? currentLocation;
@@ -57,11 +79,6 @@ class DiscoverController extends GetxController {
       permission = await Geolocator.requestPermission();
       if (permission == LocationPermission.denied) {
         return Future.error("Location permissions are denied");
-      } else {
-        myLatitude.value = currentLocation!.latitude;
-        myLongitude.value = currentLocation!.longitude;
-        print(myLongitude.value);
-        print(myLatitude.value);
       }
     }
     if (permission == LocationPermission.deniedForever) {

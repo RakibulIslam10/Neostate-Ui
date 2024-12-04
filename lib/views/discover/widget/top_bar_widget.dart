@@ -14,6 +14,9 @@ class TopBarWidget extends GetView<DiscoverController> {
         children: [
           Expanded(
             child: CountryDropDown(
+              onChanged: (p0) {
+
+              },
                 fieldPadding: EdgeInsets.only(
                     right: MediaQuery.of(context).size.width * 0.5),
                 decoration: BoxDecoration(),

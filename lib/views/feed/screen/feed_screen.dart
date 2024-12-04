@@ -1,3 +1,4 @@
+import 'package:nfcpay_structure/views/feed/widget/feed_widget.dart';
 import '../../../base/utils/basic_import.dart';
 import '../controller/feed_controller.dart';
 part 'feed_tablet_screen.dart';

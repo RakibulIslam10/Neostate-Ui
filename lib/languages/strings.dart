@@ -42,6 +42,11 @@ class Strings {
   static String list = "List  ";
   static String recommended = "Recommended";
   static String comment = "Comment";
+  static String like = "Like";
+  static String share = "Share";
+  static String whatIsNeoTaste = "What is Neo Taste?";
+  static String joinNeoTaste = "JOIN NEOTASTE";
+  static String login = "LOGIN";
   static String submitFeedback = "SUBMIT FEEDBACK";
   static String reset = "Reset";
   static String enter = "Enter";
