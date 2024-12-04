@@ -1,3 +1,6 @@
+import 'package:flutter_svg/svg.dart';
+import 'package:nfcpay_structure/assets/asstes.dart';
+
 import '../../../base/utils/basic_import.dart';
 import 'food_card_widget.dart';
 
@@ -37,9 +40,6 @@ class MapWidget extends GetView<DiscoverController> {
       ),
       markers: controller.markers,
       onMapCreated: (GoogleMapController googleMapController) {
-        // googleMapController.animateCamera(
-        //   CameraUpdate.newLatLng(controller.userLocation.value),
-        // );
       },
     );
   }
@@ -53,7 +53,6 @@ class MapWidget extends GetView<DiscoverController> {
         mainAxisAlignment: mainEnd,
         children: [
           _fillerButtonWidget(context),
-          Sizes.width.v5,
           _listButtonWidget(),
           Sizes.width.v40,
           _locationButton(),
@@ -93,6 +92,7 @@ class MapWidget extends GetView<DiscoverController> {
         Get.toNamed(Routes.filterScreen);
       },
       child: Container(
+        margin: EdgeInsets.only(right: Dimensions.widthSize * 0.2),
         padding: EdgeInsets.symmetric(
             vertical: Dimensions.verticalSize * 0.5,
             horizontal: Dimensions.horizontalSize * 0.8),
@@ -114,7 +114,7 @@ class MapWidget extends GetView<DiscoverController> {
         child: Wrap(
           spacing: Dimensions.heightSize * 0.5,
           children: [
-            Icon(Icons.filter_vintage),
+            SvgPicture.asset(Assets.icons.filter,),
             TextWidget(
               Strings.filter,
               fontWeight: FontWeight.bold,

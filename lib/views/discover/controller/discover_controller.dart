@@ -5,6 +5,11 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 class DiscoverController extends GetxController {
   RxString countrySelectMethod = 'Select City'.obs;
   var isFoodCardVisible = false.obs;
+  var isFoodCardVisibleBanani = false.obs;
+  var isFoodCardVisibleDhanmondi = false.obs;
+
+
+
   var initialLatLng = LatLng(23.8103, 90.4125).obs;
   Rx<LatLng> userLocation = LatLng(0.0, 0.0).obs;
 
@@ -53,7 +58,10 @@ class DiscoverController extends GetxController {
             title: location["name"],
             snippet: 'A popular spot in Dhaka',
             onTap: () {
-              isFoodCardVisible.value = true;
+              if (location["name"] == "Gulshan") {
+                isFoodCardVisible.value = true;
+                print('gulsan');
+              }
             },
           ),
           onTap: () {

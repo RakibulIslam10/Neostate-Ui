@@ -11,6 +11,7 @@ class $Icons {
   String get demoCard => 'assets/icons/demo_card.svg';
   String get success => 'assets/icons/success.svg';
   String get reject => 'assets/icons/reject.svg';
+  String get filter => 'assets/icons/filter.svg';
 
   AssetGen get people => const AssetGen('assets/icons/people.png');
 
