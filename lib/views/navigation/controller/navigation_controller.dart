@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:nfcpay_structure/views/bookings/screen/bookings_screen.dart';
 import 'package:nfcpay_structure/views/discover/screen/discover_screen.dart';
 import 'package:nfcpay_structure/views/feed/screen/feed_screen.dart';
+import '../../profile/screen/profile_screen.dart';
 
 class NavigationController extends GetxController {
   RxInt selectedIndex = 0.obs;
@@ -12,8 +13,7 @@ class NavigationController extends GetxController {
     DiscoverScreen(),
     FeedScreen(),
     BookingsScreen(),
-    BookingsScreen(),
-    // ProfileScreen()
+    ProfileScreen()
   ];
 
   void changePage(int index) {

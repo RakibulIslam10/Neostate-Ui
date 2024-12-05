@@ -6,18 +6,60 @@ class DiscoverMobileScreen extends GetView<DiscoverController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: _appBarWidget(context),
       body: _bodyWidget(context),
     );
   }
 
   _bodyWidget(BuildContext context) {
-    return Column(
-      children: [
-        TopBarWidget(),
-        MapWidget(),
-      ],
+    return Obx(
+      () => Column(
+        children: [
+          if (controller.isMapWidget.value) ...[
+            ProductListWidget(),
+          ] else ...[
+            MapWidget(),
+          ],
+        ],
+      ),
     );
   }
 
-}
+  _appBarWidget(BuildContext context) {
+    return AppBar(
+        automaticallyImplyLeading: false,
+        title: InkWell(
+          onTap: () {
+            _showModalBottomSheet(context);
+          },
+          child: Wrap(
+            children: [
+              TextWidget(
+                Strings.selectCity,
+                fontWeight: FontWeight.w900,
+                fontSize: Dimensions.titleLarge * 0.9,
+              ),
+              Icon(
+                Icons.arrow_drop_down,
+                size: Dimensions.iconSizeLarge,
+              )
+            ],
+          ),
+        ));
+  }
 
+  _showModalBottomSheet(BuildContext context) {
+    return showModalBottomSheet(
+      useSafeArea: true,
+      isScrollControlled: true,
+      isDismissible: true,
+      shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.vertical(
+              top: Radius.circular(Dimensions.radius * 0.6))),
+      context: context,
+      builder: (context) {
+        return BottomSheetWidget();
+      },
+    );
+  }
+}

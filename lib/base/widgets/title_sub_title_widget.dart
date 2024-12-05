@@ -29,7 +29,6 @@ class TitleSubTitleWidget extends StatelessWidget {
           textAlign: isCenterText ? TextAlign.center : TextAlign.start,
           typographyStyle: TypographyStyle.headlineSmall,
         ),
-        Sizes.height.btnInputTitleAndBox,
         Visibility(
           visible: subTitle != '',
           child: TextWidget(

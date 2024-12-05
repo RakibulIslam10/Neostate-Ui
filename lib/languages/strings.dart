@@ -13,6 +13,7 @@ class Strings {
   static String ratingsAndReviews = "Ratings & reviews";
   static String mi = "4.68572 mi ";
   static String pizza = "| Pizza";
+  static String selectCity = "Select city";
   static String twoForOne = "2for1 pizza";
   static String twoForOneHotDrink = "2for1 Hot Drink";
   static String freeDrink = "Free Drink";
@@ -39,7 +40,13 @@ class Strings {
   static String reportIssueDescription =
       "Whether restaurant details are incorrect something didn't work or you simply want to give us feedback-we'd love to hear from you and will get back to you as soon as possible your feedback helps us to keep improving the app.";
   static String filter = "Filter";
+  static String Settings = "Settings";
+  static String Tutorial = "Tutorial";
+  static String Bookmarks = "Bookmarks";
+  static String FeedBackSupport = "FeedBack & Support";
+  static String useMoreDealsToReachLevel= "Use 5 more Deals to reach Level 2 !";
   static String list = "List  ";
+  static String map = "Map  ";
   static String recommended = "Recommended";
   static String comment = "Comment";
   static String like = "Like";

@@ -1,15 +1,18 @@
 import '../../../base/utils/basic_import.dart';
+import '../model/food_card_model.dart';
 
 class FoodCardWidget extends GetView<DiscoverController> {
-  const FoodCardWidget({super.key});
+  const FoodCardWidget(this.foodCard, {super.key});
+  final FoodCardModel? foodCard;
 
   @override
   Widget build(BuildContext context) {
+
     return SizedBox(
       height: MediaQuery.of(context).size.height * 0.14,
       child: PageView.builder(
-        itemCount: 50,
-        controller: PageController(viewportFraction: 0.9),
+        itemCount: 20,
+        controller: controller.pageController,
         itemBuilder: (context, index) {
           return InkWell(
             onTap: () {
@@ -19,7 +22,7 @@ class FoodCardWidget extends GetView<DiscoverController> {
             highlightColor: Colors.transparent,
             child: Container(
               margin: EdgeInsets.symmetric(
-                horizontal: Dimensions.horizontalSize * 0.3,
+                horizontal: Dimensions.horizontalSize * 0.2,
               ),
               alignment: Alignment.center,
               height: MediaQuery.of(context).size.height * 0.12,
@@ -34,12 +37,11 @@ class FoodCardWidget extends GetView<DiscoverController> {
               child: Row(
                 children: [
                   CustomImageWidget(
-                    path:
-                        'https://www.foodiesfeed.com/wp-content/uploads/2023/06/burger-with-melted-cheese.jpg',
+                    path: foodCard!.imagePath,
+                    fit: BoxFit.cover,
                     height: MediaQuery.of(context).size.height * 0.1,
                     width: MediaQuery.of(context).size.height * 0.1,
-                    borderRadius:
-                        BorderRadius.circular(Dimensions.radius * 1.6),
+                    borderRadius: BorderRadius.circular(Dimensions.radius * 1.6),
                   ),
                   Sizes.width.v10,
                   Column(
@@ -47,7 +49,7 @@ class FoodCardWidget extends GetView<DiscoverController> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       TextWidget(
-                        Strings.pizzeriaMimmo,
+                        foodCard!.title,
                         fontWeight: FontWeight.bold,
                       ),
                       Wrap(
@@ -59,7 +61,7 @@ class FoodCardWidget extends GetView<DiscoverController> {
                             size: Dimensions.iconSizeSmall * 2,
                           ),
                           TextWidget(
-                            ' ${Strings.rating} ${Strings.mi}${Strings.pizza}',
+                            ' ${foodCard!.rating} ${Strings.rating}${foodCard!.title}',
                             fontSize: Dimensions.titleSmall * 0.9,
                             color: CustomColor.disableColor,
                           )
@@ -69,8 +71,8 @@ class FoodCardWidget extends GetView<DiscoverController> {
                       Wrap(
                         spacing: Dimensions.horizontalSize * 0.5,
                         children: [
-                          _pizzaButton(context),
-                          _drinkButton(context),
+                          _pizzaButton(context, foodCard!.offers[0]),
+                          _drinkButton(context, foodCard!.offers[1]),
                         ],
                       ),
                     ],
@@ -84,7 +86,7 @@ class FoodCardWidget extends GetView<DiscoverController> {
     );
   }
 
-  _pizzaButton(BuildContext context) {
+  _pizzaButton(BuildContext context, String offer) {
     return Container(
       alignment: Alignment.center,
       padding: EdgeInsets.symmetric(
@@ -95,14 +97,14 @@ class FoodCardWidget extends GetView<DiscoverController> {
         color: CustomColor.primary,
       ),
       child: TextWidget(
-        Strings.twoForOne,
+        offer,
         fontWeight: FontWeight.bold,
         fontSize: Dimensions.titleSmall * 0.8,
       ),
     );
   }
 
-  _drinkButton(BuildContext context) {
+  _drinkButton(BuildContext context, String offer) {
     return Container(
       alignment: Alignment.center,
       padding: EdgeInsets.symmetric(
@@ -113,7 +115,7 @@ class FoodCardWidget extends GetView<DiscoverController> {
         color: CustomColor.primary,
       ),
       child: TextWidget(
-        Strings.freeDrink,
+        offer,
         fontWeight: FontWeight.bold,
         fontSize: Dimensions.titleSmall * 0.8,
       ),

@@ -26,3 +26,4 @@ export 'package:nfcpay_structure/views/product_details/controller/product_detail
 export 'package:cached_network_image/cached_network_image.dart';
 export '../../../base/widgets/country_drop_down.dart';
 export 'package:nfcpay_structure/views/report/controller/report_controller.dart';
+export '../../../base/widgets/title_sub_title_widget.dart';

@@ -23,11 +23,6 @@ class RoutePageList {
       binding: FilterScreenBinding(),
     ),
     GetPage(
-      name: Routes.productListScreen,
-      page: () => ProductListScreen(),
-      binding: ProductListScreenBinding(),
-    ),
-    GetPage(
       name: Routes.reportScreen,
       page: () => ReportScreen(),
       binding: ReportScreenBinding(),
