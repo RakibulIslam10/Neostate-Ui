@@ -45,30 +45,20 @@ class DiscoverController extends GetxController {
     _loadMarkers();
 
   }
-  //
-  //
-  // Future<BitmapDescriptor> getCustomIcon() async {
-  //   return SizedBox(
-  //     height: 200,
-  //     width: 200,
-  //     child: Image.asset("temp image"),
-  //   ).toBitmapDescriptor();
-  // }
-
 
   void _loadMarkers() async {
     markers.clear();
     for (var location in locations) {
       markers.add(
         Marker(
-          // icon: ,
+
           markerId: MarkerId(location.name),
           position: location.position,
           onTap: () {
             _onMarkerTapped(location);
             pageController.animateToPage(
               0,
-              duration: Duration(milliseconds: 200),
+              duration: Duration(milliseconds: 400),
               curve: Curves.easeInOut,
             );
           },
@@ -128,11 +118,6 @@ class DiscoverController extends GetxController {
     final GoogleMapController controller = await completer.future;
     await controller.animateCamera(CameraUpdate.newCameraPosition(position));
   }
-
-
-
-
-
 
 
 

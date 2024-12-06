@@ -18,11 +18,13 @@ class BottomSheetWidget extends GetView<DiscoverController> {
                 onTap: () {
                   controller.selectCountry(controller.countryList[index]);
                   Navigator.pop(context);
+                  print(controller.countrySelectMethod.value);
                   controller.goToLocation(
                     CameraPosition(
                       target: LatLng(24.461952285741287, 89.70634734372821),
-                      zoom: 11.4546
+                      zoom: 12.4546
                     ),
+
                   );
                 },
                 child: Column(
