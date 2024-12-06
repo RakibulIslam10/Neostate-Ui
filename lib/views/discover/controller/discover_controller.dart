@@ -1,39 +1,42 @@
-import 'package:geolocator/geolocator.dart';
 import '../../../base/utils/basic_import.dart';
-import '../model/food_card_model.dart';
-import '../model/location_model.dart';
 
 class DiscoverController extends GetxController {
   final pageController = PageController();
 
   RxBool isMapWidget = false.obs;
-  RxString countrySelectMethod = 'Select City'.obs;
+
   var isFoodCardVisible = false.obs;
   var selectedFoodCard = Rxn<FoodCardModel>(null);
-  var initialLatLng = LatLng(23.8103, 90.4125).obs;
+  var initialLatLng = LatLng(24.25797455880862, 90.3733552981817).obs;
+
   final RxSet<Marker> markers = <Marker>{}.obs;
 
+  RxString countrySelectMethod = 'Select city'.obs;
+
+  void selectCountry(String countryName) {
+    countrySelectMethod.value = countryName;
+  }
+
   List<String> countryList = [
-    'Bangladesh',
-    'India',
-    'United States',
-    'Canada',
-    'Australia',
-    'United Kingdom',
-    'Germany',
-    'France',
-    'Japan',
-    'Brazil'
-        'Bangladesh',
-    'India',
-    'United States',
-    'Canada',
-    'Australia',
-    'United Kingdom',
-    'Germany',
-    'France',
-    'Japan',
-    'Brazil'
+    'Dhaka City Center',
+    'Dhanmondi',
+    'Uttara',
+    'Gulshan',
+    'Banani',
+    'Mohakhali',
+    'Tejgaon',
+    'Shahbagh',
+    'Jatrabari',
+    'Dhaka City Center',
+    'Dhanmondi',
+    'Uttara',
+    'Gulshan',
+    'Banani',
+    'Mohakhali',
+    'Tejgaon',
+    'Shahbagh',
+    'Jatrabari',
+    'Old Dhaka',
   ];
 
   @override
@@ -41,6 +44,8 @@ class DiscoverController extends GetxController {
     super.onInit();
     _loadMarkers();
   }
+
+  ///------------------GOOGLE MAP INTEGRATE HERE ----------------
 
   void _loadMarkers() async {
     markers.clear();
@@ -53,9 +58,10 @@ class DiscoverController extends GetxController {
             _onMarkerTapped(location);
             pageController.animateToPage(
               0,
-              duration: Duration(milliseconds: 400),
+              duration: Duration(milliseconds: 200),
               curve: Curves.easeInOut,
             );
+
           },
           infoWindow: InfoWindow(
             title: location.name,
@@ -66,11 +72,52 @@ class DiscoverController extends GetxController {
     }
   }
 
+  final Completer<GoogleMapController> completer =
+      Completer<GoogleMapController>();
+  Rx<CameraPosition> initialPosition = CameraPosition(
+    target: LatLng(24.2772833217101, 90.39329548558868),
+    zoom: 14.4546,
+  ).obs;
 
+  Position? currentLocation;
 
+  Future<void> determinePosition() async {
+    bool serviceEnabled;
+    LocationPermission permission;
+    serviceEnabled = await Geolocator.isLocationServiceEnabled();
+    if (!serviceEnabled) {
+      CustomSnackBar.error('Error", "Location services are disabled.');
+      return;
+    }
+    permission = await Geolocator.checkPermission();
+    if (permission == LocationPermission.denied) {
+      permission = await Geolocator.requestPermission();
+      if (permission == LocationPermission.denied) {
+        CustomSnackBar.error('Error", "Location permissions are denied.');
+        return;
+      }
+    }
 
+    if (permission == LocationPermission.deniedForever) {
+      CustomSnackBar.error(
+          'Error", "Location permissions are permanently denied.');
+      return;
+    }
 
+    currentLocation = await Geolocator.getCurrentPosition();
+    if (currentLocation != null) {
+      initialPosition.value = CameraPosition(
+        target: LatLng(currentLocation!.latitude, currentLocation!.longitude),
+        zoom: 14.4546,
+      );
+      goToLocation(initialPosition.value);
+    }
+  }
 
+  Future<void> goToLocation(CameraPosition position) async {
+    final GoogleMapController controller = await completer.future;
+    await controller.animateCamera(CameraUpdate.newCameraPosition(position));
+  }
 
 
 
@@ -89,7 +136,7 @@ class DiscoverController extends GetxController {
 
 
   _onMarkerTapped(LocationModel location) {
-    if (location.name == 'Dhaka City Center') {
+    if (location.name == 'Sirajganj Sadar') {
       selectedFoodCard.value = FoodCardModel(
         imagePath:
             'https://www.foodiesfeed.com/wp-content/uploads/2023/06/burger-with-melted-cheese.jpg',
@@ -97,7 +144,7 @@ class DiscoverController extends GetxController {
         rating: 4.2,
         offers: ['20% off', 'Happy Hour'],
       );
-    } else if (location.name == 'Dhanmondi') {
+    } else if (location.name == 'Kamarpara') {
       selectedFoodCard.value = FoodCardModel(
         imagePath:
             'https://images.immediate.co.uk/production/volatile/sites/30/2020/08/chorizo-mozarella-gnocchi-bake-cropped-9ab73a3.jpg?resize=768,574',
@@ -105,7 +152,7 @@ class DiscoverController extends GetxController {
         rating: 4.5,
         offers: ['2 for 1', 'Free Drink'],
       );
-    } else if (location.name == 'Uttara') {
+    } else if (location.name == 'Salanga') {
       selectedFoodCard.value = FoodCardModel(
         imagePath:
             'https://www.foodiesfeed.com/wp-content/uploads/2023/06/burger-with-melted-cheese.jpg',
@@ -113,7 +160,7 @@ class DiscoverController extends GetxController {
         rating: 4.0,
         offers: ['10% off', 'Free Fries'],
       );
-    } else if (location.name == 'Gulshan') {
+    } else if (location.name == 'Raiganj') {
       selectedFoodCard.value = FoodCardModel(
         imagePath:
             'https://images.immediate.co.uk/production/volatile/sites/30/2020/08/chorizo-mozarella-gnocchi-bake-cropped-9ab73a3.jpg?resize=768,574',
@@ -121,7 +168,7 @@ class DiscoverController extends GetxController {
         rating: 4.7,
         offers: ['Free Drink', 'Happy Hour'],
       );
-    } else if (location.name == 'Banani') {
+    } else if (location.name == 'Shahjadpur') {
       selectedFoodCard.value = FoodCardModel(
         imagePath:
             'https://www.foodiesfeed.com/wp-content/uploads/2023/06/burger-with-melted-cheese.jpg',
@@ -169,29 +216,5 @@ class DiscoverController extends GetxController {
         offers: ['No offer', 'Check out the menu'],
       );
     }
-  }
-
-  Position? currentLocation;
-
-  Future<Position> determinePosition() async {
-    bool serviceEnabled;
-    LocationPermission permission;
-
-    serviceEnabled = await Geolocator.isLocationServiceEnabled();
-    if (!serviceEnabled) {
-      return Future.error('Location service are disable');
-    }
-    permission = await Geolocator.checkPermission();
-    if (permission == LocationPermission.denied) {
-      permission = await Geolocator.requestPermission();
-      if (permission == LocationPermission.denied) {
-        return Future.error("Location permissions are denied");
-      }
-    }
-    if (permission == LocationPermission.deniedForever) {
-      return Future.error(
-          'Location permissions are permanently denied , we cannot request permissions');
-    }
-    return await Geolocator.getCurrentPosition();
   }
 }

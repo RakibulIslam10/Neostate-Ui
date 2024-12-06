@@ -29,16 +29,18 @@ class DiscoverMobileScreen extends GetView<DiscoverController> {
     return AppBar(
         automaticallyImplyLeading: false,
         title: InkWell(
+          splashColor: Colors.transparent,
+          highlightColor: Colors.transparent,
           onTap: () {
             _showModalBottomSheet(context);
           },
           child: Wrap(
             children: [
-              TextWidget(
-                Strings.selectCity,
+              Obx(() => TextWidget(
+                controller.countrySelectMethod.value,
                 fontWeight: FontWeight.w900,
                 fontSize: Dimensions.titleLarge * 0.9,
-              ),
+              ),),
               Icon(
                 Icons.arrow_drop_down,
                 size: Dimensions.iconSizeLarge,
@@ -52,10 +54,9 @@ class DiscoverMobileScreen extends GetView<DiscoverController> {
     return showModalBottomSheet(
       useSafeArea: true,
       isScrollControlled: true,
-      isDismissible: true,
       shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.vertical(
-              top: Radius.circular(Dimensions.radius * 0.6))),
+              top: Radius.circular(Dimensions.radius * 0.6),),),
       context: context,
       builder: (context) {
         return BottomSheetWidget();

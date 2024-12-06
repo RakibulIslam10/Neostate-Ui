@@ -20,4 +20,12 @@ final List<LocationModel> locations = [
   LocationModel(position: LatLng(23.7372, 90.3951), name: "Shahbagh"),
   LocationModel(position: LatLng(23.7057, 90.3563), name: "Jatrabari"),
   LocationModel(position: LatLng(23.7284, 90.4093), name: "Old Dhaka"),
+
+LocationModel(position: LatLng(24.4466, 89.7390), name: "Sirajganj Sadar"),
+LocationModel(position: LatLng(24.4245, 89.7055), name: "Kamarpara"),
+LocationModel(position: LatLng(24.4198, 89.7394), name: "Salanga"),
+LocationModel(position: LatLng(24.4667, 89.7278), name: "Raiganj"),
+LocationModel(position: LatLng(24.4857, 89.7352), name: "Shahjadpur"),
+LocationModel(position: LatLng(24.4133, 89.6875), name: "Pangsha"),
+  LocationModel(position: LatLng(24.46158118565097, 89.70544612153135), name: "Sirajganj"),
 ];

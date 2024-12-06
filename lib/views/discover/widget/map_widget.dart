@@ -3,8 +3,8 @@ import '../../../base/utils/basic_import.dart';
 import 'food_card_widget.dart';
 
 class MapWidget extends GetView<DiscoverController> {
-  const MapWidget({super.key});
-
+  MapWidget({super.key});
+  
   @override
   Widget build(BuildContext context) {
     return Expanded(
@@ -32,10 +32,12 @@ class MapWidget extends GetView<DiscoverController> {
     return GoogleMap(
       initialCameraPosition: CameraPosition(
         target: controller.initialLatLng.value,
-        zoom: 12.0,
+        zoom: 6.4546
       ),
-      markers: controller.markers,
-      onMapCreated: (GoogleMapController mapController) {
+      markers: Set.of(controller.markers),
+      onMapCreated: (GoogleMapController gController) {
+        controller.completer.complete(gController);
+
       },
     );
   }
@@ -59,6 +61,7 @@ class MapWidget extends GetView<DiscoverController> {
     return InkWell(
       onTap: () {
         controller.determinePosition();
+
       },
       child: Container(
           padding: EdgeInsets.all(Dimensions.paddingSize * 0.4),

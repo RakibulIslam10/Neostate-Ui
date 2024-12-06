@@ -27,3 +27,7 @@ export 'package:cached_network_image/cached_network_image.dart';
 export '../../../base/widgets/country_drop_down.dart';
 export 'package:nfcpay_structure/views/report/controller/report_controller.dart';
 export '../../../base/widgets/title_sub_title_widget.dart';
+export 'dart:async';
+export 'package:geolocator/geolocator.dart';
+export 'package:nfcpay_structure/views/discover/model/food_card_model.dart';
+export 'package:nfcpay_structure/views/discover/model/location_model.dart';
