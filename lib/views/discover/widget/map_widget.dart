@@ -4,7 +4,7 @@ import 'food_card_widget.dart';
 
 class MapWidget extends GetView<DiscoverController> {
   MapWidget({super.key});
-  
+
   @override
   Widget build(BuildContext context) {
     return Expanded(
@@ -33,8 +33,8 @@ class MapWidget extends GetView<DiscoverController> {
       zoomControlsEnabled: true,
 
       initialCameraPosition: CameraPosition(
-        target: controller.initialLatLng.value,
-        zoom: 6.4546
+          target: controller.initialLatLng.value,
+          zoom: 6.4546
       ),
       markers: Set.of(controller.markers),
       onMapCreated: (GoogleMapController gController) {

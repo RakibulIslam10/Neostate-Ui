@@ -42,6 +42,7 @@ class DiscoverController extends GetxController {
   @override
   void onInit() {
     super.onInit();
+    loadCustomMarker();
     _loadMarkers();
 
   }
@@ -51,13 +52,12 @@ class DiscoverController extends GetxController {
     for (var location in locations) {
       markers.add(
         Marker(
-
+          icon: customIcon.value,
           markerId: MarkerId(location.name),
           position: location.position,
           onTap: () {
             _onMarkerTapped(location);
-            pageController.animateToPage(
-              0,
+            pageController.animateToPage(0,
               duration: Duration(milliseconds: 400),
               curve: Curves.easeInOut,
             );
@@ -69,6 +69,16 @@ class DiscoverController extends GetxController {
         ),
       );
     }
+  }
+
+  Rx<BitmapDescriptor> customIcon = BitmapDescriptor.defaultMarker.obs;
+  void loadCustomMarker() {
+    BitmapDescriptor.fromAssetImage(
+      const ImageConfiguration(),
+      'assets/icons/mymarker.png',
+    ).then((icon) {
+      customIcon.value = icon;
+    });
   }
 
 
