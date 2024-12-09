@@ -2,6 +2,12 @@ part of '../routes/routes.dart';
 
 class RoutePageList {
   static var list = [
+    GetPage(
+      name: Routes.testScreen,
+      page: () => const TestScreen(),
+      binding: TestBinding(),
+    ),
+    
 
     GetPage(
       name: Routes.navigation,

@@ -9,7 +9,7 @@ class BottomSheetWidget extends GetView<DiscoverController> {
       slivers: [
         SliverList(
           delegate: SliverChildBuilderDelegate(
-                (context, index) {
+            (context, index) {
               return InkWell(
                 splashColor: Colors.transparent,
                 highlightColor: Colors.transparent,
@@ -20,9 +20,7 @@ class BottomSheetWidget extends GetView<DiscoverController> {
                   controller.goToLocation(
                     CameraPosition(
                         target: LatLng(24.461952285741287, 89.70634734372821),
-                        zoom: 12.4546
-                    ),
-
+                        zoom: 12.4546),
                   );
                 },
                 child: Column(
@@ -58,4 +56,3 @@ class BottomSheetWidget extends GetView<DiscoverController> {
     );
   }
 }
-

@@ -54,3 +54,6 @@ flutter:
   assets:
     - assets/icons/
     - assets/logo/
+    - images/car.png
+    - images/location.png
+    - assets/icons/location.png

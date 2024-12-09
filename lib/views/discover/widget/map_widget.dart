@@ -15,12 +15,13 @@ class MapWidget extends GetView<DiscoverController> {
           _googleMap(),
           if (controller.selectedFoodCard.value != null) ...[
             Positioned(
-                bottom: MediaQuery.of(context).size.height * 0.16,
-                left: 10,
-                right: 10,
-                child: FoodCardWidget(
-                  controller.selectedFoodCard.value,
-                )),
+              bottom: MediaQuery.of(context).size.height * 0.16,
+              left: 10,
+              right: 10,
+              child: FoodCardWidget(
+                controller.selectedFoodCard.value,
+              ),
+            ),
           ],
           _buttonWidget(context),
         ],
@@ -30,10 +31,8 @@ class MapWidget extends GetView<DiscoverController> {
 
   _googleMap() {
     return GoogleMap(
-      initialCameraPosition: CameraPosition(
-          target: controller.initialLatLng.value,
-          zoom: 6.4546
-      ),
+      initialCameraPosition:
+          CameraPosition(target: controller.initialLatLng.value, zoom: 6.4546),
       markers: Set.of(controller.markers),
       onMapCreated: (GoogleMapController gController) {
         controller.completer.complete(gController);
@@ -60,7 +59,6 @@ class MapWidget extends GetView<DiscoverController> {
     return InkWell(
       onTap: () {
         controller.determinePosition();
-
       },
       child: Container(
           padding: EdgeInsets.all(Dimensions.paddingSize * 0.4),

@@ -1,8 +1,10 @@
+import 'dart:ui' as ui;
+import 'package:flutter/services.dart';
+
 import '../../../base/utils/basic_import.dart';
 
 class DiscoverController extends GetxController {
   final pageController = PageController();
-
   RxBool isMapWidget = false.obs;
 
   var isFoodCardVisible = false.obs;
@@ -42,29 +44,39 @@ class DiscoverController extends GetxController {
   @override
   void onInit() {
     super.onInit();
-
     _loadMarkers();
-
   }
 
+  Uint8List? markerImage;
 
+  Future<Uint8List> getBytesFormAssets(String path, int width) async {
+    ByteData data = await rootBundle.load(path);
+    ui.Codec codec = await ui.instantiateImageCodec(data.buffer.asUint8List(),
+        targetHeight: width);
+    ui.FrameInfo fi = await codec.getNextFrame();
+    return (await fi.image.toByteData(format: ui.ImageByteFormat.png))!
+        .buffer
+        .asUint8List();
+  }
 
   void _loadMarkers() async {
     markers.clear();
     for (var location in locations) {
+      final Uint8List markerIcon =
+          await getBytesFormAssets('images/location.png', 100);
       markers.add(
         Marker(
-          // icon: customIcon.value,
+          icon: BitmapDescriptor.fromBytes(markerIcon),
           markerId: MarkerId(location.name),
           position: location.position,
           onTap: () {
             _onMarkerTapped(location);
-            pageController.animateToPage(0,
+            pageController.animateToPage(
+              0,
               duration: Duration(milliseconds: 400),
               curve: Curves.easeInOut,
             );
           },
-
           infoWindow: InfoWindow(
             title: location.name,
             snippet: 'A popular spot in Dhaka',
@@ -74,9 +86,9 @@ class DiscoverController extends GetxController {
     }
   }
 
-
   final Completer<GoogleMapController> completer =
       Completer<GoogleMapController>();
+
   Rx<CameraPosition> initialPosition = CameraPosition(
     target: LatLng(24.2772833217101, 90.39329548558868),
     zoom: 14.4546,
@@ -121,7 +133,6 @@ class DiscoverController extends GetxController {
     final GoogleMapController controller = await completer.future;
     await controller.animateCamera(CameraUpdate.newCameraPosition(position));
   }
-
 
   _onMarkerTapped(LocationModel location) {
     if (location.name == 'Sirajganj Sadar') {

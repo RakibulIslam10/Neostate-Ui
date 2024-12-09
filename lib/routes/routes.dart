@@ -8,7 +8,9 @@ import 'package:nfcpay_structure/views/product_details/screen/product_details_sc
 import 'package:nfcpay_structure/views/report/screen/report_screen.dart';
 import '../bindings/report_screen_binding.dart';
 import '../bindings/splash_binding.dart';
+import '../bindings/test_binding.dart';
 import '../views/splash/screen/splash_screen.dart';
+import '../views/test/screen/test_screen.dart';
 part '../routes/route_pages.dart';
 
 class Routes {
@@ -24,4 +26,5 @@ class Routes {
   static const String reportScreen = '/reportScreen';
 
   static const String food_menuScreen = '/food_menuScreen';
+  static const String testScreen = '/testScreen';
 }
