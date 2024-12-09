@@ -1,3 +1,6 @@
+import 'package:nfcpay_structure/views/product_details/widgets/bottom_sheet_info_widget.dart';
+import 'package:nfcpay_structure/views/product_details/widgets/top_menu_widget.dart';
+import 'package:sticky_headers/sticky_headers/widget.dart';
 import '../../../base/utils/basic_import.dart';
 
 class MenuButtonWidget extends GetView<ProductDetailsController> {
@@ -12,19 +15,48 @@ class MenuButtonWidget extends GetView<ProductDetailsController> {
       child: Row(
         mainAxisAlignment: mainSpaceBet,
         children: [
-          Container(
-            padding: EdgeInsets.symmetric(
-                vertical: Dimensions.verticalSize * 0.2,
-                horizontal: Dimensions.horizontalSize * 3.4),
-            decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(Dimensions.radius * 2),
-                border: Border.fromBorderSide(
-                    BorderSide(
-                        width: 2,
-                        color: CustomColor.disableColor.withOpacity(0.5)))),
-            child: Wrap(
-              spacing: Dimensions.horizontalSize * 0.2,
-              children: [Icon(Icons.list), TextWidget(Strings.menu,fontWeight: FontWeight.w500,)],
+          InkWell(
+            highlightColor: Colors.transparent,
+            splashColor: Colors.transparent,
+            onTap: () {
+              showModalBottomSheet(
+                isScrollControlled: true,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.vertical(
+                    top: Radius.circular(Dimensions.radius * 0.6),
+                  ),
+                ),
+                context: context,
+                builder: (context) {
+                  return Column(
+                    children: [
+                      TopMenuWidget(),
+                      BottomSheetInfoWidget()
+                    ],
+                  );
+                },
+              );
+              // Get.toNamed(Routes.food_menuScreen);
+            },
+            child: Container(
+              padding: EdgeInsets.symmetric(
+                  vertical: Dimensions.verticalSize * 0.2,
+                  horizontal: Dimensions.horizontalSize * 3.4),
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(Dimensions.radius * 2),
+                  border: Border.fromBorderSide(BorderSide(
+                      width: 2,
+                      color: CustomColor.disableColor.withOpacity(0.5)))),
+              child: Wrap(
+                spacing: Dimensions.horizontalSize * 0.2,
+                children: [
+                  Icon(Icons.list),
+                  TextWidget(
+                    Strings.menu,
+                    fontWeight: FontWeight.w500,
+                  )
+                ],
+              ),
             ),
           ),
           Wrap(
@@ -34,21 +66,18 @@ class MenuButtonWidget extends GetView<ProductDetailsController> {
                 padding: EdgeInsets.all(Dimensions.paddingSize * 0.2),
                 decoration: BoxDecoration(
                     shape: BoxShape.circle,
-                    border: Border.fromBorderSide(
-                        BorderSide(
-                            width: 2,
-                            color: CustomColor.disableColor.withOpacity(0.5)))),
+                    border: Border.fromBorderSide(BorderSide(
+                        width: 2,
+                        color: CustomColor.disableColor.withOpacity(0.5)))),
                 child: Icon(Icons.favorite_border),
               ),
               Container(
                 padding: EdgeInsets.all(Dimensions.paddingSize * 0.2),
                 decoration: BoxDecoration(
                     shape: BoxShape.circle,
-
-                    border: Border.fromBorderSide(
-                        BorderSide(
-                            width: 2,
-                            color: CustomColor.disableColor.withOpacity(0.5)))),
+                    border: Border.fromBorderSide(BorderSide(
+                        width: 2,
+                        color: CustomColor.disableColor.withOpacity(0.5)))),
                 child: Icon(Icons.share),
               ),
             ],

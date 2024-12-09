@@ -42,17 +42,19 @@ class DiscoverController extends GetxController {
   @override
   void onInit() {
     super.onInit();
-    loadCustomMarker();
+
     _loadMarkers();
 
   }
+
+
 
   void _loadMarkers() async {
     markers.clear();
     for (var location in locations) {
       markers.add(
         Marker(
-          icon: customIcon.value,
+          // icon: customIcon.value,
           markerId: MarkerId(location.name),
           position: location.position,
           onTap: () {
@@ -62,6 +64,7 @@ class DiscoverController extends GetxController {
               curve: Curves.easeInOut,
             );
           },
+
           infoWindow: InfoWindow(
             title: location.name,
             snippet: 'A popular spot in Dhaka',
@@ -69,16 +72,6 @@ class DiscoverController extends GetxController {
         ),
       );
     }
-  }
-
-  Rx<BitmapDescriptor> customIcon = BitmapDescriptor.defaultMarker.obs;
-  void loadCustomMarker() {
-    BitmapDescriptor.fromAssetImage(
-      const ImageConfiguration(),
-      'assets/icons/mymarker.png',
-    ).then((icon) {
-      customIcon.value = icon;
-    });
   }
 
 
@@ -128,10 +121,6 @@ class DiscoverController extends GetxController {
     final GoogleMapController controller = await completer.future;
     await controller.animateCamera(CameraUpdate.newCameraPosition(position));
   }
-
-
-
-
 
 
   _onMarkerTapped(LocationModel location) {

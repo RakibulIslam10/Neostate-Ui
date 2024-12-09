@@ -41,8 +41,8 @@ dependencies:
   dropdown_button2: ^2.3.9
   google_maps_flutter: ^2.10.0
   location: ^7.0.1
-  flutter_polyline_points :
-
+  widget_to_marker: ^1.0.6
+  sticky_headers: ^0.3.0
 
 
 dev_dependencies:

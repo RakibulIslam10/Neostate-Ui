@@ -12,6 +12,7 @@ class $Icons {
   String get success => 'assets/icons/success.svg';
   String get reject => 'assets/icons/reject.svg';
   String get filter => 'assets/icons/filter.svg';
+  String get marker => 'assets/icons/file.png';
   String get myMarker => 'assets/icons/mymarker.svg';
 
   AssetGen get people => const AssetGen('assets/icons/people.png');
@@ -20,6 +21,9 @@ class $Icons {
     demoCard,
     people,
     success,
+    filter,
+    marker,
+    myMarker
 
   ];
 }

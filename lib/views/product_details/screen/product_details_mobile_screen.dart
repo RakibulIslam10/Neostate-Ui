@@ -11,26 +11,24 @@ class ProductDetailsMobileScreen extends GetView<ProductDetailsController> {
   }
 
   _bodyWidget(BuildContext context) {
-    return SafeArea(
-      child: CustomScrollView(
-        slivers: [
-          ImageWidgets(),
-          SliverList(
-            delegate: SliverChildListDelegate(
-              [
-                TextHeadingWidget(),
-                MenuButtonWidget(),
-                InfoBoxWidget(Strings.twoForOne, Strings.description),
-                InfoBoxWidget(Strings.twoForOneHotDrink, Strings.description2),
-                RatingReviewsWidget(),
-                CommentsSectionWidget(),
-                LocationMapWidget(),
-                ContactAndOpeningWidget(),
-              ],
-            ),
+    return CustomScrollView(
+      slivers: [
+        ImageWidgets(),
+        SliverList(
+          delegate: SliverChildListDelegate(
+            [
+              TextHeadingWidget(),
+              MenuButtonWidget(),
+              InfoBoxWidget(Strings.twoForOne, Strings.description),
+              InfoBoxWidget(Strings.twoForOneHotDrink, Strings.description2),
+              RatingReviewsWidget(),
+              CommentsSectionWidget(),
+              LocationMapWidget(),
+              ContactAndOpeningWidget(),
+            ],
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }

@@ -79,7 +79,7 @@ class MapFilterButtonWidget extends GetView<DiscoverController> {
               spacing: Dimensions.heightSize * 0.5,
               children: [
                 Icon(controller.isMapWidget.value
-                    ? Icons.location_pin
+                    ? Icons.map_outlined
                     : Icons.list),
                 TextWidget(
                   controller.isMapWidget.value ? Strings.map : Strings.list,

@@ -5,13 +5,11 @@ class BottomSheetWidget extends GetView<DiscoverController> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisSize: mainMin,
-      children: [
-        Expanded(
-          child: ListView.builder(
-            itemCount: controller.countryList.length,
-            itemBuilder: (context, index) {
+    return CustomScrollView(
+      slivers: [
+        SliverList(
+          delegate: SliverChildBuilderDelegate(
+                (context, index) {
               return InkWell(
                 splashColor: Colors.transparent,
                 highlightColor: Colors.transparent,
@@ -21,8 +19,8 @@ class BottomSheetWidget extends GetView<DiscoverController> {
                   print(controller.countrySelectMethod.value);
                   controller.goToLocation(
                     CameraPosition(
-                      target: LatLng(24.461952285741287, 89.70634734372821),
-                      zoom: 12.4546
+                        target: LatLng(24.461952285741287, 89.70634734372821),
+                        zoom: 12.4546
                     ),
 
                   );
@@ -53,9 +51,11 @@ class BottomSheetWidget extends GetView<DiscoverController> {
                 ),
               );
             },
+            childCount: controller.countryList.length,
           ),
         ),
       ],
     );
   }
 }
+

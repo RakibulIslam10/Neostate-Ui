@@ -9,7 +9,7 @@ class ListFoodCard extends GetView<DiscoverController> {
       slivers: [
         SliverList(
           delegate: SliverChildBuilderDelegate(
-                (BuildContext context, int index) {
+            (BuildContext context, int index) {
               print(index);
               return Column(
                 children: [
@@ -30,11 +30,11 @@ class ListFoodCard extends GetView<DiscoverController> {
                           Row(
                             children: [
                               CustomImageWidget(
-                                path:
-                                'https://www.foodiesfeed.com/wp-content/uploads/2023/06/burger-with-melted-cheese.jpg',
+                                path:'https://www.foodiesfeed.com/wp-content/uploads/2023/06/burger-with-melted-cheese.jpg',
                                 height: MediaQuery.of(context).size.height * 0.1,
                                 width: MediaQuery.of(context).size.height * 0.1,
-                                borderRadius: BorderRadius.circular(Dimensions.radius * 1.6),
+                                borderRadius: BorderRadius.circular(
+                                    Dimensions.radius * 1.6),
                               ),
                               Sizes.width.v10,
                               Column(
@@ -46,7 +46,8 @@ class ListFoodCard extends GetView<DiscoverController> {
                                     fontWeight: FontWeight.bold,
                                   ),
                                   Wrap(
-                                    crossAxisAlignment: WrapCrossAlignment.center,
+                                    crossAxisAlignment:
+                                        WrapCrossAlignment.center,
                                     children: [
                                       Icon(
                                         Icons.star,
@@ -76,8 +77,7 @@ class ListFoodCard extends GetView<DiscoverController> {
                       ),
                     ),
                   ),
-                  Divider(
-                    height: 2,
+                  Divider(height: 2,
                     color: CustomColor.disableColor.withOpacity(0.5),
                   )
                 ],
@@ -89,6 +89,7 @@ class ListFoodCard extends GetView<DiscoverController> {
       ],
     );
   }
+
   _firstButton(BuildContext context) {
     return Container(
       alignment: Alignment.center,

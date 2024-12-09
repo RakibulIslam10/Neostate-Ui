@@ -1,4 +1,5 @@
 import '../../../base/utils/basic_import.dart';
+import '../model/menu_info_model.dart';
 
 class ProductDetailsController extends GetxController {
   Rx<CameraPosition> initialCameraPosition = CameraPosition(
@@ -13,4 +14,24 @@ class ProductDetailsController extends GetxController {
     'https://www.allrecipes.com/thmb/fFW1o307WSqFFYQ3-QXYVpnFj6E=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/48727-Mikes-homemade-pizza-DDMFS-beauty-4x3-BG-2974-a7a9842c14e34ca699f3b7d7143256cf.jpg',
     'https://plus.unsplash.com/premium_photo-1673108852141-e8c3c22a4a22?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8Zm9vZCUyMGltYWdlc3xlbnwwfHwwfHx8MA%3D%3D'
   ];
+
+  final items = <Item>[
+    Item(name: 'Pommes', description: Strings.description, price: 4.50),
+    Item(name: 'Burger', description: Strings.description, price: 5.00),
+    Item(name: 'Pizza', description: Strings.description, price: 6.50),
+    Item(name: 'Burger', description: Strings.description, price: 6.50),
+    Item(name: 'Pommes', description: Strings.description, price: 6.50),
+    Item(name: 'Pizza', description: Strings.description, price: 6.50),
+    Item(name: 'Burger', description: Strings.description, price: 6.50),
+    Item(name: 'PIMP MY FRIES', description: Strings.description, price: 6.50),
+    Item(name: 'SALATE', description: Strings.description, price: 6.50),
+    Item(name: 'BURGER', description: Strings.description, price: 6.50),
+    Item(name: 'Pizza', description: Strings.description, price: 6.50),
+    Item(name: 'Pizza', description: Strings.description, price: 6.50),
+    Item(name: 'Pizza', description: Strings.description, price: 6.50),
+    Item(name: 'Pizza', description: Strings.description, price: 6.50),
+    Item(name: 'Pizza', description: Strings.description, price: 6.50),
+    Item(name: 'Pizza', description: Strings.description, price: 6.50),
+  ].obs;
+
 }

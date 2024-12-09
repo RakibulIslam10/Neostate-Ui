@@ -11,7 +11,7 @@ class InfoListWidget extends GetView<ProfileController> {
         ListTile(
           leading: Icon(Icons.favorite_outline),
           title: TextWidget(
-            Strings.Bookmarks,
+            Strings.bookmarks,
             fontSize: Dimensions.titleSmall,
             fontWeight: FontWeight.bold,
           ),
@@ -38,7 +38,7 @@ class InfoListWidget extends GetView<ProfileController> {
         ListTile(
           leading: Icon(Icons.mode_comment_outlined),
           title: TextWidget(
-            Strings.FeedBackSupport,
+            Strings.feedBackSupport,
             fontSize: Dimensions.titleSmall,
             fontWeight: FontWeight.bold,
           ),

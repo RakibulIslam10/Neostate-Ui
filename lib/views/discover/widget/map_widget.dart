@@ -30,8 +30,6 @@ class MapWidget extends GetView<DiscoverController> {
 
   _googleMap() {
     return GoogleMap(
-      zoomControlsEnabled: true,
-
       initialCameraPosition: CameraPosition(
           target: controller.initialLatLng.value,
           zoom: 6.4546
@@ -39,7 +37,6 @@ class MapWidget extends GetView<DiscoverController> {
       markers: Set.of(controller.markers),
       onMapCreated: (GoogleMapController gController) {
         controller.completer.complete(gController);
-
       },
     );
   }

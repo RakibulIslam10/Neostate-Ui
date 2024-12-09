@@ -27,40 +27,43 @@ class DiscoverMobileScreen extends GetView<DiscoverController> {
 
   _appBarWidget(BuildContext context) {
     return AppBar(
-        automaticallyImplyLeading: false,
-        title: InkWell(
-          splashColor: Colors.transparent,
-          highlightColor: Colors.transparent,
+      scrolledUnderElevation: 0,
+      automaticallyImplyLeading: false,
+      title: InkWell(
+        splashColor: Colors.transparent,
+        highlightColor: Colors.transparent,
           onTap: () {
-            _showModalBottomSheet(context);
-          },
-          child: Wrap(
-            children: [
-              Obx(() => TextWidget(
+            showModalBottomSheet(
+              isScrollControlled: true,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.vertical(
+                  top: Radius.circular(Dimensions.radius * 0.6),
+                ),
+              ),
+              context: context,
+              builder: (context) {
+                return BottomSheetWidget();
+              },
+            );
+
+        },
+        child: Wrap(
+          children: [
+            Obx(
+              () => TextWidget(
                 controller.countrySelectMethod.value,
                 fontWeight: FontWeight.w900,
                 fontSize: Dimensions.titleLarge * 0.9,
-              ),),
-              Icon(
-                Icons.arrow_drop_down,
-                size: Dimensions.iconSizeLarge,
-              )
-            ],
-          ),
-        ));
-  }
-
-  _showModalBottomSheet(BuildContext context) {
-    return showModalBottomSheet(
-      useSafeArea: true,
-      isScrollControlled: true,
-      shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.vertical(
-              top: Radius.circular(Dimensions.radius * 0.6),),),
-      context: context,
-      builder: (context) {
-        return BottomSheetWidget();
-      },
+              ),
+            ),
+            Icon(
+              Icons.arrow_drop_down,
+              size: Dimensions.iconSizeLarge,
+            )
+          ],
+        ),
+      ),
     );
   }
+
 }

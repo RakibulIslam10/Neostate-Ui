@@ -26,6 +26,13 @@ class Strings {
   static String openingHours = "Opening hours";
   static String ccc = "ccc |";
   static String menu = "Menu";
+  static String pommes = "POMMES";
+  static String pimpMyFries = "PIMP MY FRIES";
+  static String salate = "SALATE";
+  static String chicken = "CHICKEN";
+  static String veggie = "VEGGIE";
+  static String vegan = "VEGAN";
+  static String examplesFromThe = "Examples from the";
   static String cbBenefit = "--CB benefit";
   static String days = "90 days";
   static String day = "Day";
@@ -42,9 +49,10 @@ class Strings {
   static String filter = "Filter";
   static String Settings = "Settings";
   static String Tutorial = "Tutorial";
-  static String Bookmarks = "Bookmarks";
-  static String FeedBackSupport = "FeedBack & Support";
-  static String useMoreDealsToReachLevel= "Use 5 more Deals to reach Level 2 !";
+  static String bookmarks = "Bookmarks";
+  static String feedBackSupport = "FeedBack & Support";
+  static String useMoreDealsToReachLevel =
+      "Use 5 more Deals to reach Level 2 !";
   static String list = "List  ";
   static String map = "Map  ";
   static String recommended = "Recommended";
@@ -60,7 +68,7 @@ class Strings {
   static String pleaseFillOutTheField = "Please Fill Out The Field";
 
   static String description =
-      "You order 2 pizzas of your the cheaper/equally priced one will not be charged";
+      "You order MenuInfoWidget MenuInfoWidget  MenuInfoWidget MenuInfoWidget the cheaper/equally cheaper priced one will not";
   static String description2 =
       "you order 2 hot drink of your choice the cheaper/equally priced one will not be charged";
 }
