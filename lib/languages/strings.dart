@@ -37,6 +37,7 @@ class Strings {
   static String days = "90 days";
   static String day = "Day";
   static String time = "Time";
+  static String New = "New";
   static String category = "Category";
   static String apply = "Apply";
   static String today = "Today";
@@ -56,7 +57,11 @@ class Strings {
   static String list = "List  ";
   static String map = "Map  ";
   static String recommended = "Recommended";
+  static String mostPopular = "Most popular";
+  static String topRated = "Top rated";
+  static String bestDeals = "Best deals";
   static String comment = "Comment";
+  static String distance = "Distance";
   static String like = "Like";
   static String share = "Share";
   static String whatIsNeoTaste = "What is Neo Taste?";

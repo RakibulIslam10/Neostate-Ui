@@ -1,6 +1,8 @@
 import 'package:nfcpay_structure/base/utils/basic_import.dart';
 import 'package:nfcpay_structure/views/discover/widget/map_widget.dart';
 import 'package:nfcpay_structure/views/discover/widget/product_list_widget.dart';
+import 'package:nfcpay_structure/views/discover/widget/recommended_widget.dart';
+import 'package:nfcpay_structure/views/discover/widget/top_bar_title_widget.dart';
 import '../widget/bottom_sheet_widget.dart';
 import 'discover_tablet_screen.dart';
 part 'discover_mobile_screen.dart';

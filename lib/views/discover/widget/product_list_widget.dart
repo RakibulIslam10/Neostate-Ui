@@ -7,16 +7,17 @@ class ProductListWidget extends GetView<DiscoverController> {
 
   @override
   Widget build(BuildContext context) {
-    return _bodyWidget();
+    return _bodyWidget(context);
   }
 
-  _bodyWidget() {
+  _bodyWidget(context) {
     return Expanded(
       child: Stack(
         alignment: Alignment.bottomCenter,
         children: [
           ListFoodCard(),
-          Positioned(bottom: 75.0, child: MapFilterButtonWidget())
+          Positioned(bottom: 75.0, child: MapFilterButtonWidget()),
+
         ],
       ),
     );

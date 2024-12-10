@@ -13,7 +13,7 @@ class $Icons {
   String get reject => 'assets/icons/reject.svg';
   String get filter => 'assets/icons/filter.svg';
   String get marker => 'assets/icons/file.png';
-  String get myMarker => 'assets/icons/mymarker.svg';
+  String get myMarker => 'assets/icons/car.png';
 
   AssetGen get people => const AssetGen('assets/icons/people.png');
 

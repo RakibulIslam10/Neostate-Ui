@@ -1,6 +1,4 @@
 import 'dart:ui' as ui;
-import 'package:flutter/services.dart';
-
 import '../../../base/utils/basic_import.dart';
 
 class DiscoverController extends GetxController {
@@ -8,6 +6,7 @@ class DiscoverController extends GetxController {
   RxBool isMapWidget = false.obs;
 
   var isFoodCardVisible = false.obs;
+  var isSelected = 0.obs;
   var selectedFoodCard = Rxn<FoodCardModel>(null);
   var initialLatLng = LatLng(24.25797455880862, 90.3733552981817).obs;
 
@@ -41,6 +40,14 @@ class DiscoverController extends GetxController {
     'Old Dhaka',
   ];
 
+  var textItem = [
+    Strings.recommended,
+    Strings.topRated,
+    Strings.bestDeals,
+    Strings.New,
+    Strings.distance,
+  ];
+
   @override
   void onInit() {
     super.onInit();
@@ -63,7 +70,7 @@ class DiscoverController extends GetxController {
     markers.clear();
     for (var location in locations) {
       final Uint8List markerIcon =
-          await getBytesFormAssets('images/location.png', 100);
+          await getBytesFormAssets('assets/marker.png', 100);
       markers.add(
         Marker(
           icon: BitmapDescriptor.fromBytes(markerIcon),

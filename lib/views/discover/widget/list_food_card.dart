@@ -30,8 +30,10 @@ class ListFoodCard extends GetView<DiscoverController> {
                           Row(
                             children: [
                               CustomImageWidget(
-                                path:'https://www.foodiesfeed.com/wp-content/uploads/2023/06/burger-with-melted-cheese.jpg',
-                                height: MediaQuery.of(context).size.height * 0.1,
+                                path:
+                                    'https://www.foodiesfeed.com/wp-content/uploads/2023/06/burger-with-melted-cheese.jpg',
+                                height:
+                                    MediaQuery.of(context).size.height * 0.1,
                                 width: MediaQuery.of(context).size.height * 0.1,
                                 borderRadius: BorderRadius.circular(
                                     Dimensions.radius * 1.6),
@@ -77,7 +79,8 @@ class ListFoodCard extends GetView<DiscoverController> {
                       ),
                     ),
                   ),
-                  Divider(height: 2,
+                  Divider(
+                    height: 2,
                     color: CustomColor.disableColor.withOpacity(0.5),
                   )
                 ],
