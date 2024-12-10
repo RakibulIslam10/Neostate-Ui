@@ -20,6 +20,7 @@ enum BorderStyle {
 class PrimaryInputWidget extends StatefulWidget {
   final String hintText, phoneCode;
   final String? label;
+  final String? title;
   final String? optionalText;
   final String? prefixIconPath;
   final int maxLines;
@@ -82,7 +83,7 @@ class PrimaryInputWidget extends StatefulWidget {
     this.showBorderSide = true,
     this.customShapeDecoration,
     this.onChanged,
-    this.suffixIconPadding,
+    this.suffixIconPadding, this.title,
   });
 
   @override
@@ -116,13 +117,13 @@ class _PrimaryInputWidgetState extends State<PrimaryInputWidget> {
 
   _buildDecoration() {
     return InputDecoration(
-      hintText: widget.skipEnterText
-          ? widget.hintText
-          : "${Strings.enter} ${widget.hintText}",
-      hintStyle: CustomStyle.bodyMedium.copyWith(
-        fontWeight: FontWeight.w400,
-        color: Color(0xffDDDDDD),
-      ),
+      // hintText: widget.skipEnterText
+      //     ? widget.hintText
+      //     : "${Strings.enter} ${widget.hintText}",
+      // hintStyle: CustomStyle.bodyMedium.copyWith(
+      //   fontWeight: FontWeight.w400,
+      //   color: Color(0xffDDDDDD),
+      // ),
       border: _setBorderStyle(BSS.b),
       enabledBorder: _setBorderStyle(BSS.enabledBorder),
       focusedBorder: _setBorderStyle(BSS.focusedBorder),
@@ -138,90 +139,96 @@ class _PrimaryInputWidgetState extends State<PrimaryInputWidget> {
   }
 
   _buildTextFormFieldWidget(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.start,
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Container(
-          // height: 61.h,
-          decoration: widget.showShape
-              ? _buildShapeDecoration(context)
-              : const BoxDecoration(),
-          margin: EdgeInsets.zero,
-          child: Row(
-            children: [
-              Expanded(
-                child: Padding(
-                  padding: EdgeInsets.all(Dimensions.paddingSize * 0.5),
-                  child: Column(
-                    crossAxisAlignment: crossStart,
-                    children: [
-                      _buildTitle(),
-                      TextSelectionTheme(
-                        data: TextSelectionThemeData(
-                          selectionHandleColor: CustomColor.primary,
+    return Padding(
+      padding:  EdgeInsets.symmetric(horizontal: Dimensions.horizontalSize * 0.5),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+         TextWidget(
+           padding: EdgeInsets.symmetric(vertical: Dimensions.verticalSize * 0.5),
+           widget.title ?? '',fontWeight: FontWeight.bold,),
+          Container(
+            // height: 61.h,
+            decoration: widget.showShape
+                ? _buildShapeDecoration(context)
+                : const BoxDecoration(),
+            margin: EdgeInsets.zero,
+            child: Row(
+              children: [
+                Expanded(
+                  child: Padding(
+                    padding: EdgeInsets.all(Dimensions.paddingSize * 0.5),
+                    child: Column(
+                      crossAxisAlignment: crossStart,
+                      children: [
+                        _buildTitle(),
+                        TextSelectionTheme(
+                          data: TextSelectionThemeData(
+                            selectionHandleColor: CustomColor.primary,
+                          ),
+                          child: TextFormField(
+                            readOnly: widget.readOnly,
+                            controller: widget.controller,
+                            focusNode: focusNode,
+                            autofocus: widget.autoFocus,
+                            style: _setFontStyle(),
+                            inputFormatters: widget.inputFormatters,
+                            obscureText:
+                            widget.isPasswordField ? isVisibility : false,
+                            textInputAction: TextInputAction.next,
+                            keyboardType: widget.textInputType,
+                            maxLines: widget.maxLines,
+                            decoration: _buildDecoration(),
+                            validator:
+                            widget.validatorFunction ?? _setValidator(),
+                            cursorColor: CustomColor.blackColor,
+                            onChanged: widget.onChanged,
+                            onTap: () {
+                              if (!widget.readOnly) {
+                                setState(() {
+                                  focusNode!.unfocus();
+                                  focusNode!.requestFocus();
+                                });
+                              }
+                            },
+                            onFieldSubmitted: (value) {
+                              if (!widget.readOnly) {
+                                setState(() {
+                                  focusNode!.unfocus();
+                                });
+                              }
+                            },
+                            onEditingComplete: () {
+                              if (!widget.readOnly) {
+                                setState(() {
+                                  focusNode!.unfocus();
+                                });
+                              }
+                            },
+                            onTapOutside: (value) {
+                              if (!widget.readOnly) {
+                                setState(() {
+                                  focusNode!.unfocus();
+                                });
+                              }
+                            },
+                          ),
                         ),
-                        child: TextFormField(
-                          readOnly: widget.readOnly,
-                          controller: widget.controller,
-                          focusNode: focusNode,
-                          autofocus: widget.autoFocus,
-                          style: _setFontStyle(),
-                          inputFormatters: widget.inputFormatters,
-                          obscureText:
-                          widget.isPasswordField ? isVisibility : false,
-                          textInputAction: TextInputAction.next,
-                          keyboardType: widget.textInputType,
-                          maxLines: widget.maxLines,
-                          decoration: _buildDecoration(),
-                          validator:
-                          widget.validatorFunction ?? _setValidator(),
-                          cursorColor: CustomColor.blackColor,
-                          onChanged: widget.onChanged,
-                          onTap: () {
-                            if (!widget.readOnly) {
-                              setState(() {
-                                focusNode!.unfocus();
-                                focusNode!.requestFocus();
-                              });
-                            }
-                          },
-                          onFieldSubmitted: (value) {
-                            if (!widget.readOnly) {
-                              setState(() {
-                                focusNode!.unfocus();
-                              });
-                            }
-                          },
-                          onEditingComplete: () {
-                            if (!widget.readOnly) {
-                              setState(() {
-                                focusNode!.unfocus();
-                              });
-                            }
-                          },
-                          onTapOutside: (value) {
-                            if (!widget.readOnly) {
-                              setState(() {
-                                focusNode!.unfocus();
-                              });
-                            }
-                          },
-                        ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                 ),
-              ),
-              Container(
-                padding: widget.suffixIconPadding ??
-                    EdgeInsets.all(Dimensions.paddingSize * 0.5),
-                child: _setSuffixIcon(),
-              )
-            ],
+                Container(
+                  padding: widget.suffixIconPadding ??
+                      EdgeInsets.all(Dimensions.paddingSize * 0.5),
+                  child: _setSuffixIcon(),
+                )
+              ],
+            ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 
@@ -264,17 +271,17 @@ class _PrimaryInputWidgetState extends State<PrimaryInputWidget> {
       case BSS.enabledBorder:
         return BorderSide(
           width: widget.borderWidth,
-          color: Colors.transparent,
+          color: CustomColor.disableColor,
         );
       case BSS.b:
         return BorderSide(
           width: widget.borderWidth,
-          color: Colors.transparent,
+          color: CustomColor.disableColor,
         );
       case BSS.disableBorder:
         return BorderSide(
           width: widget.borderWidth,
-          color: Colors.transparent,
+          color: CustomColor.disableColor,
         );
       case BSS.focusedBorder:
         return BorderSide(
@@ -294,7 +301,7 @@ class _PrimaryInputWidgetState extends State<PrimaryInputWidget> {
       default:
         return BorderSide(
           width: widget.borderWidth,
-          color: Colors.transparent,
+          color: CustomColor.disableColor,
         );
     }
   }

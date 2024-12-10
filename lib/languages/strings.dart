@@ -29,9 +29,17 @@ class Strings {
   static String pommes = "POMMES";
   static String pimpMyFries = "PIMP MY FRIES";
   static String salate = "SALATE";
+  static String OhNothingHereYet = "Oh, nothing here yet";
+  static String editProfile = "Edit profile";
+  static String YouHaveNoFavoritesYetSaveRestaurantsByPressingTheHeart =
+      "You have no favorites yet Save restaurants by pressing the heart button";
   static String chicken = "CHICKEN";
   static String veggie = "VEGGIE";
   static String vegan = "VEGAN";
+  static String firstName = "First name";
+  static String lastName = "Last name";
+  static String eMail = "E-Mail";
+  static String postCode = "Postcode";
   static String examplesFromThe = "Examples from the";
   static String cbBenefit = "--CB benefit";
   static String days = "90 days";
@@ -64,10 +72,12 @@ class Strings {
   static String distance = "Distance";
   static String like = "Like";
   static String share = "Share";
+  static String Bookmark = "Bookmarks";
   static String whatIsNeoTaste = "What is Neo Taste?";
   static String joinNeoTaste = "JOIN NEOTASTE";
   static String login = "LOGIN";
   static String submitFeedback = "SUBMIT FEEDBACK";
+  static String discoverRestaurants = "Discover restaurants";
   static String reset = "Reset";
   static String enter = "Enter";
   static String pleaseFillOutTheField = "Please Fill Out The Field";

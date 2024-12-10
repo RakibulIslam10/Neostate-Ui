@@ -9,6 +9,9 @@ class InfoListWidget extends GetView<ProfileController> {
     return Column(
       children: [
         ListTile(
+          onTap: () {
+            Get.toNamed(Routes.bookmarkScreen);
+          },
           leading: Icon(Icons.favorite_outline),
           title: TextWidget(
             Strings.bookmarks,
@@ -29,6 +32,9 @@ class InfoListWidget extends GetView<ProfileController> {
         ListTile(
           leading: Icon(Icons.settings),
           title: TextWidget(
+            onTap: () {
+              Get.toNamed(Routes.edit_profileScreen);
+            },
             Strings.Settings,
             fontSize: Dimensions.titleSmall,
             fontWeight: FontWeight.bold,
