@@ -14,7 +14,10 @@ class TopBarTitleWidget extends GetView<DiscoverController> {
           highlightColor: Colors.transparent,
           onTap: () {
             showModalBottomSheet(
+              useSafeArea: true,
+              showDragHandle: true,
               isScrollControlled: true,
+
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.vertical(
                   top: Radius.circular(Dimensions.radius * 0.6),
@@ -28,16 +31,15 @@ class TopBarTitleWidget extends GetView<DiscoverController> {
           },
           child: Wrap(
             children: [
-              Obx(
-                    () => TextWidget(
+              Obx(() => TextWidget(
                   controller.countrySelectMethod.value,
                   fontWeight: FontWeight.w900,
                   fontSize: Dimensions.titleLarge * 0.9,
                 ),
               ),
               Icon(
-                Icons.arrow_drop_down,
-                size: Dimensions.iconSizeLarge,
+                Icons.expand_more,
+                size: Dimensions.iconSizeLarge * 1.1,
               )
             ],
           ),
