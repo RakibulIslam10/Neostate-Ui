@@ -2,6 +2,13 @@ import '../../../base/utils/basic_import.dart';
 import '../model/menu_info_model.dart';
 
 class ProductDetailsController extends GetxController {
+
+  RxBool isSelected = false.obs;
+
+
+
+
+
   Rx<CameraPosition> initialCameraPosition = CameraPosition(
     target: LatLng(37.7749, -122.4194), // Example coordinates (San Francisco)
     zoom: 16.0,

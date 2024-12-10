@@ -1,6 +1,6 @@
 import 'package:nfcpay_structure/views/product_details/widgets/bottom_sheet_info_widget.dart';
 import 'package:nfcpay_structure/views/product_details/widgets/top_menu_widget.dart';
-import 'package:sticky_headers/sticky_headers/widget.dart';
+import 'package:share_plus/share_plus.dart';
 import '../../../base/utils/basic_import.dart';
 
 class MenuButtonWidget extends GetView<ProductDetailsController> {
@@ -29,10 +29,7 @@ class MenuButtonWidget extends GetView<ProductDetailsController> {
                 context: context,
                 builder: (context) {
                   return Column(
-                    children: [
-                      TopMenuWidget(),
-                      BottomSheetInfoWidget()
-                    ],
+                    children: [TopMenuWidget(), BottomSheetInfoWidget()],
                   );
                 },
               );
@@ -62,23 +59,49 @@ class MenuButtonWidget extends GetView<ProductDetailsController> {
           Wrap(
             spacing: Dimensions.horizontalSize * 0.5,
             children: [
-              Container(
-                padding: EdgeInsets.all(Dimensions.paddingSize * 0.2),
-                decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    border: Border.fromBorderSide(BorderSide(
-                        width: 2,
-                        color: CustomColor.disableColor.withOpacity(0.5)))),
-                child: Icon(Icons.favorite_border),
-              ),
-              Container(
-                padding: EdgeInsets.all(Dimensions.paddingSize * 0.2),
-                decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    border: Border.fromBorderSide(BorderSide(
-                        width: 2,
-                        color: CustomColor.disableColor.withOpacity(0.5)))),
-                child: Icon(Icons.share),
+              InkWell(
+                  highlightColor: Colors.transparent,
+                  splashColor: Colors.transparent,
+                  onTap: () {
+                    controller.isSelected.value = !controller.isSelected.value;
+                  },
+                  child: Obx(
+                    () => Container(
+                      padding: EdgeInsets.all(Dimensions.paddingSize * 0.2),
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        border: Border.fromBorderSide(
+                          BorderSide(
+                            width: 2,
+                            color: CustomColor.disableColor.withOpacity(0.5),
+                          ),
+                        ),
+                      ),
+                      child: controller.isSelected.value
+                          ? Icon(
+                              Icons.favorite,
+                              color: Colors.pink,
+                            )
+                          : Icon(
+                              Icons.favorite_outline,
+                            ),
+                    ),
+                  )),
+              InkWell(
+                splashColor: Colors.transparent,
+                highlightColor: Colors.transparent,
+                onTap: (){
+                  Share.share('Share');
+                },
+                child: Container(
+                  padding: EdgeInsets.all(Dimensions.paddingSize * 0.2),
+                  decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      border: Border.fromBorderSide(BorderSide(
+                          width: 2,
+                          color: CustomColor.disableColor.withOpacity(0.5)))),
+                  child: Icon(Icons.share),
+                ),
               ),
             ],
           ),

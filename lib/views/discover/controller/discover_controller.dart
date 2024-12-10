@@ -70,7 +70,7 @@ class DiscoverController extends GetxController {
     markers.clear();
     for (var location in locations) {
       final Uint8List markerIcon =
-          await getBytesFormAssets('assets/marker.png', 100);
+          await getBytesFormAssets('assets/marker.png', 120);
       markers.add(
         Marker(
           icon: BitmapDescriptor.fromBytes(markerIcon),
@@ -83,6 +83,7 @@ class DiscoverController extends GetxController {
               duration: Duration(milliseconds: 400),
               curve: Curves.easeInOut,
             );
+
           },
           infoWindow: InfoWindow(
             title: location.name,
