@@ -12,6 +12,7 @@ class $Icons {
   String get success => 'assets/icons/success.svg';
   String get reject => 'assets/icons/reject.svg';
   String get filter => 'assets/icons/filter.svg';
+  String get filters => 'assets/icons/filters.svg';
   String get marker => 'assets/icons/file.png';
   String get myMarker => 'assets/icons/car.png';
 

@@ -12,7 +12,7 @@ class Strings {
   static String ratings = "4.7";
   static String ratingsAndReviews = "Ratings & reviews";
   static String mi = "4.68572 mi ";
-  static String pizza = "| Pizza";
+  static String pizza = " | Pizza";
   static String selectCity = "Select city";
   static String twoForOne = "2for1 pizza";
   static String twoForOneHotDrink = "2for1 Hot Drink";

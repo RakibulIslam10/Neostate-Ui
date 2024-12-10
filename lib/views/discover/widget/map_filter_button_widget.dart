@@ -40,7 +40,7 @@ class MapFilterButtonWidget extends GetView<DiscoverController> {
               crossAxisAlignment: WrapCrossAlignment.center,
               children: [
                 SvgPicture.asset(
-                  Assets.icons.filter,
+                  Assets.icons.filters,
                   height: Dimensions.heightSize * 1.6,
                 ),
                 TextWidget(

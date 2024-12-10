@@ -27,5 +27,4 @@ LocationModel(position: LatLng(24.4198, 89.7394), name: "Salanga"),
 LocationModel(position: LatLng(24.4667, 89.7278), name: "Raiganj"),
 LocationModel(position: LatLng(24.4857, 89.7352), name: "Shahjadpur"),
 LocationModel(position: LatLng(24.4133, 89.6875), name: "Pangsha"),
-  LocationModel(position: LatLng(24.46158118565097, 89.70544612153135), name: "Sirajganj"),
 ];

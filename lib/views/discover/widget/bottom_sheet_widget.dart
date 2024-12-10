@@ -14,15 +14,25 @@ class BottomSheetWidget extends GetView<DiscoverController> {
                 splashColor: Colors.transparent,
                 highlightColor: Colors.transparent,
                 onTap: () {
+                  final locations = {
+                    0: LatLng(24.461952285741287, 89.70634734372821),
+                    1: LatLng(23.8103, 90.4125),
+                    2: LatLng(22.3569, 91.7832),
+                  };
+
                   controller.selectCountry(controller.countryList[index]);
                   Navigator.pop(context);
+
+                  final targetLatLng = locations[index] ?? LatLng(20.5937, 78.9629);
+
+                  controller.goToLocation(CameraPosition(
+                    target: targetLatLng,
+                    zoom: 12.4546,
+                  ));
+
                   print(controller.countrySelectMethod.value);
-                  controller.goToLocation(
-                    CameraPosition(
-                        target: LatLng(24.461952285741287, 89.70634734372821),
-                        zoom: 12.4546),
-                  );
                 },
+
                 child: Column(
                   children: [
                     Padding(

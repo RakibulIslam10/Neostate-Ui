@@ -4,20 +4,13 @@ import '../../../base/utils/basic_import.dart';
 class DiscoverController extends GetxController {
   final pageController = PageController();
   RxBool isMapWidget = false.obs;
-
+  RxString countrySelectMethod = 'Select city'.obs;
   var isFoodCardVisible = false.obs;
   var isSelected = 0.obs;
   var selectedFoodCard = Rxn<FoodCardModel>(null);
   var initialLatLng = LatLng(24.25797455880862, 90.3733552981817).obs;
-
   final RxSet<Marker> markers = <Marker>{}.obs;
-
-  RxString countrySelectMethod = 'Select city'.obs;
-
-  void selectCountry(String countryName) {
-    countrySelectMethod.value = countryName;
-  }
-
+  Position? currentLocation;
   List<String> countryList = [
     'Dhaka City Center',
     'Dhanmondi',
@@ -54,6 +47,10 @@ class DiscoverController extends GetxController {
     _loadMarkers();
   }
 
+  void selectCountry(String countryName) {
+    countrySelectMethod.value = countryName;
+  }
+
   Uint8List? markerImage;
 
   Future<Uint8List> getBytesFormAssets(String path, int width) async {
@@ -83,7 +80,6 @@ class DiscoverController extends GetxController {
               duration: Duration(milliseconds: 400),
               curve: Curves.easeInOut,
             );
-
           },
           infoWindow: InfoWindow(
             title: location.name,
@@ -102,28 +98,21 @@ class DiscoverController extends GetxController {
     zoom: 14.4546,
   ).obs;
 
-  Position? currentLocation;
-
   Future<void> determinePosition() async {
     bool serviceEnabled;
     LocationPermission permission;
     serviceEnabled = await Geolocator.isLocationServiceEnabled();
     if (!serviceEnabled) {
-      CustomSnackBar.error('Error", "Location services are disabled.');
       return;
     }
     permission = await Geolocator.checkPermission();
     if (permission == LocationPermission.denied) {
       permission = await Geolocator.requestPermission();
       if (permission == LocationPermission.denied) {
-        CustomSnackBar.error('Error", "Location permissions are denied.');
         return;
       }
     }
-
     if (permission == LocationPermission.deniedForever) {
-      CustomSnackBar.error(
-          'Error", "Location permissions are permanently denied.');
       return;
     }
 
