@@ -57,8 +57,8 @@ class MapWidget extends GetView<DiscoverController> {
 
   _locationButton() {
     return InkWell(
-      onTap: () {
-        controller.determinePosition();
+      onTap: () async{
+      await controller.determinePosition();
       },
       child: Container(
           padding: EdgeInsets.all(Dimensions.paddingSize * 0.4),
