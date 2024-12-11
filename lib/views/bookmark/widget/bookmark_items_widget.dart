@@ -13,6 +13,7 @@ class BookmarkItemsWidget extends GetView<BookmarkController> {
           SliverList(
             delegate: SliverChildBuilderDelegate(
               (BuildContext context, int index) {
+                final item = controller.cartItems[index];
                 print(index);
                 return Column(
                   children: [
@@ -48,7 +49,7 @@ class BookmarkItemsWidget extends GetView<BookmarkController> {
                                   mainAxisAlignment: mainCenter,
                                   children: [
                                     TextWidget(
-                                      Strings.pizzeriaMimmo,
+                                      item['name'],
                                       fontWeight: FontWeight.bold,
                                     ),
                                     Wrap(
@@ -90,7 +91,7 @@ class BookmarkItemsWidget extends GetView<BookmarkController> {
                   ],
                 );
               },
-              childCount: 50,
+              childCount: controller.cartItems.length,
             ),
           ),
         ],

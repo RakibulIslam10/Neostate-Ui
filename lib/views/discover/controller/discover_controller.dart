@@ -8,7 +8,7 @@ class DiscoverController extends GetxController {
   var isFoodCardVisible = false.obs;
   var isSelected = 0.obs;
 
-
+  
 
 
   var selectedFoodCard = Rxn<FoodCardModel>(null);
