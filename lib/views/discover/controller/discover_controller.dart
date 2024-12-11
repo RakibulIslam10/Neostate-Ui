@@ -7,6 +7,10 @@ class DiscoverController extends GetxController {
   RxString countrySelectMethod = 'Select city'.obs;
   var isFoodCardVisible = false.obs;
   var isSelected = 0.obs;
+
+
+
+
   var selectedFoodCard = Rxn<FoodCardModel>(null);
   var initialLatLng = LatLng(24.25797455880862, 90.3733552981817).obs;
   final RxSet<Marker> markers = <Marker>{}.obs;
@@ -131,10 +135,16 @@ class DiscoverController extends GetxController {
     await controller.animateCamera(CameraUpdate.newCameraPosition(position));
   }
 
+
+  List<FoodCardModel> bookMarkItems = [
+
+  ];
+
   _onMarkerTapped(LocationModel location) {
     if (location.name == 'Sirajganj Sadar') {
       selectedFoodCard.value = FoodCardModel(
         imagePath:
+
             'https://www.foodiesfeed.com/wp-content/uploads/2023/06/burger-with-melted-cheese.jpg',
         title: 'Spaghetti House',
         rating: 4.2,

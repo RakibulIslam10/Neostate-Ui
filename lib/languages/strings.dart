@@ -29,8 +29,15 @@ class Strings {
   static String pommes = "POMMES";
   static String pimpMyFries = "PIMP MY FRIES";
   static String salate = "SALATE";
+  static String signOut = "SIGN OUT";
+  static String redeemVoucher = "Redeem voucher";
+  static String pleaseEnterBelowTheVoucherOrReferralCodeYouWantToRedeem = "Please enter below the voucher or referral code you want to redeem.";
   static String OhNothingHereYet = "Oh, nothing here yet";
   static String editProfile = "Edit profile";
+  static String subscription = "Subscription";
+  static String addSubscription = "Add subscription";
+  static String enterVoucherCode = "Enter voucher code";
+  static String account = "Account";
   static String YouHaveNoFavoritesYetSaveRestaurantsByPressingTheHeart =
       "You have no favorites yet Save restaurants by pressing the heart button";
   static String chicken = "CHICKEN";
@@ -69,9 +76,11 @@ class Strings {
   static String topRated = "Top rated";
   static String bestDeals = "Best deals";
   static String comment = "Comment";
+  static String checkCode = "Check code";
   static String distance = "Distance";
   static String like = "Like";
   static String share = "Share";
+  static String save = "Save";
   static String Bookmark = "Bookmarks";
   static String whatIsNeoTaste = "What is Neo Taste?";
   static String joinNeoTaste = "JOIN NEOTASTE";
@@ -79,6 +88,8 @@ class Strings {
   static String submitFeedback = "SUBMIT FEEDBACK";
   static String discoverRestaurants = "Discover restaurants";
   static String reset = "Reset";
+  static String Code = "Code";
+  static String deleteAccount = "Delete account";
   static String enter = "Enter";
   static String pleaseFillOutTheField = "Please Fill Out The Field";
 

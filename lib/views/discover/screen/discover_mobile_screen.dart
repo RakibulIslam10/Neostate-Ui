@@ -7,7 +7,21 @@ class DiscoverMobileScreen extends GetView<DiscoverController> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: CustomColor.whiteColor,
-      appBar: _appBarWidget(context),
+      appBar: CustomAppBar(
+        '',
+        leading: TopBarTitleWidget(),
+        appbarSize: Dimensions.appBarHeight * 1.2,
+        leadingWidth: MediaQuery.of(context).size.width,
+        action: [
+          IconButton(
+            onPressed: () {},
+            icon: Icon(
+              Icons.search,
+              size: Dimensions.iconSizeLarge,
+            ),
+          ),
+        ],
+      ),
       body: _bodyWidget(context),
     );
   }
@@ -18,7 +32,6 @@ class DiscoverMobileScreen extends GetView<DiscoverController> {
         crossAxisAlignment: crossStart,
         children: [
           if (controller.isMapWidget.value) ...[
-            Sizes.height.v10,
             RecommendedWidget(),
             ProductListWidget(),
           ] else ...[
@@ -27,46 +40,5 @@ class DiscoverMobileScreen extends GetView<DiscoverController> {
         ],
       ),
     );
-  }
-
-   _appBarWidget(BuildContext context) {
-    return PreferredSize(
-      preferredSize: Size.fromHeight(Dimensions.appBarHeight * 2), // Height of the AppBar
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          AppBar(
-            elevation: 0,
-            backgroundColor: Colors.white,
-            scrolledUnderElevation: 0,
-            automaticallyImplyLeading: false,
-            title: TopBarTitleWidget(),
-            actions: [
-              IconButton(
-                onPressed: () {},
-                icon: Icon(
-                  Icons.search_rounded,
-                  size: Dimensions.iconSizeLarge,
-                ),
-              )
-            ],
-          ),
-          // Custom shadow at the bottom
-          Container(
-            height: 1, // Height of the shadow
-            decoration: BoxDecoration(
-              boxShadow: [
-                BoxShadow(
-                  color: CustomColor.whiteColor,
-                  blurRadius: 10,
-                  spreadRadius: 11,
-                ),
-              ],
-            ),
-          ),
-        ],
-      ),
-    );
-
   }
 }

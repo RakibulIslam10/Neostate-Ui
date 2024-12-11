@@ -54,7 +54,7 @@ class PrimaryButton extends StatelessWidget {
                 shape: shape ??
                     RoundedRectangleBorder(
                       borderRadius:
-                          BorderRadius.circular(Dimensions.radius * 2.5),
+                          BorderRadius.circular(Dimensions.radius *2.2),
                     ),
                 backgroundColor:
                     disable ? CustomColor.disableColor : buttonColor,

@@ -17,6 +17,7 @@ class FoodCardWidget extends GetView<DiscoverController> {
           return InkWell(
             onTap: () {
               Get.toNamed(Routes.ProductDetails);
+
             },
             splashColor: Colors.transparent,
             highlightColor: Colors.transparent,

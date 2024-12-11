@@ -9,6 +9,13 @@ class EditProfileMobileScreen extends GetView<EditProfileController> {
       appBar: CustomAppBar(
         Strings.editProfile,
         centerTitle: false,
+        action: [
+          TextWidget(
+            Strings.save,
+            color: CustomColor.disableColor,
+            fontWeight: FontWeight.bold,
+          ),
+        ],
       ),
       body: _bodyWidget(context),
     );
@@ -16,14 +23,14 @@ class EditProfileMobileScreen extends GetView<EditProfileController> {
 
   _bodyWidget(BuildContext context) {
     return SafeArea(
-      child: Column(
-        children: [
-          ProfileImagePick(),
-          PrimaryInputWidget(
-            title: Strings.firstName,
-              controller: controller.firstNameController,
-              hintText: Strings.firstName)
-        ],
+      child: SingleChildScrollView(
+        child: Column(
+          children: [
+            Sizes.height.v40,
+            ProfileImagePick(),
+            UserInfoFieldWidget(),
+          ],
+        ),
       ),
     );
   }

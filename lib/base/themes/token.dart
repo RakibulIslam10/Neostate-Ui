@@ -13,7 +13,7 @@ part 'themes.dart';
 final ThemeData lightThemeData = ThemeData.light().copyWith(
   primaryColor: CustomColor.primary,
   colorScheme: ColorScheme.light(tertiary: CustomColor.tertiary),
-  scaffoldBackgroundColor: CustomColor.background,
+  scaffoldBackgroundColor: CustomColor.whiteColor,
   appBarTheme: AppBarTheme(systemOverlayStyle: SystemUiOverlayStyle.light),
   textTheme: ThemeData.light().textTheme.apply(
         // fontFamily: GoogleFonts.montserrat().fontFamily,

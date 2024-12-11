@@ -1,5 +1,4 @@
 #!/bin/bash
-
 case "$1" in
   "generate-keystore")
     curl -sSL https://raw.githubusercontent.com/rabbihossenjoy/gen/main/generate_keystore.sh | bash

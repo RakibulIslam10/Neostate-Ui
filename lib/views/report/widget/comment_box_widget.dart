@@ -8,19 +8,15 @@ class CommentBoxWidget extends GetView<ReportController> {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        TextWidget(
-          Strings.comment,
-          fontWeight: FontWeight.bold,
-          padding:
-              EdgeInsets.symmetric(vertical: Dimensions.verticalSize * 0.5),
-        ),
         Padding(
           padding:
-              EdgeInsets.symmetric(horizontal: Dimensions.horizontalSize * 0.5),
+              EdgeInsets.symmetric(horizontal: Dimensions.horizontalSize * 0.5,vertical: Dimensions.verticalSize * 0.5),
           child: PrimaryInputWidget(
+            title: Strings.comment,
+            hintText: '',
               maxLines: 4,
               controller: controller.commentController,
-              hintText: ''),
+             ),
         ),
         Sizes.height.v20,
       ],

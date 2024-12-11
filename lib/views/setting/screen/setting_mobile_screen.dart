@@ -6,15 +6,27 @@ class SettingMobileScreen extends GetView<SettingController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const CustomAppBar('Setting Mobile Screen'),
+      appBar: CustomAppBar(
+        Strings.Settings,
+        centerTitle: false,
+      ),
       body: _bodyWidget(context),
     );
   }
 
   _bodyWidget(BuildContext context) {
-    return const SafeArea(
-      child: Column(
-        children: [],
+    return SafeArea(
+      child: Padding(
+        padding:  EdgeInsets.symmetric(horizontal: Dimensions.horizontalSize * 0.5),
+        child: Column(
+          children: [
+            AccountInfoWidget(),
+            SubscriptionButtonsWidget(),
+            Spacer(),
+            SignOutButtonWidget()
+
+          ],
+        ),
       ),
     );
   }

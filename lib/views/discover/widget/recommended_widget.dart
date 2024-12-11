@@ -19,10 +19,10 @@ class RecommendedWidget extends GetView<DiscoverController> {
           context: context,
           builder: (context) {
             return Obx(
-                  () => Column(
+              () => Column(
                 children: List.generate(
                   controller.textItem.length,
-                      (index) {
+                  (index) {
                     return Padding(
                       padding: EdgeInsets.symmetric(
                         horizontal: Dimensions.horizontalSize * 0.5,
@@ -32,8 +32,9 @@ class RecommendedWidget extends GetView<DiscoverController> {
                         highlightColor: Colors.transparent,
                         splashColor: Colors.transparent,
                         onTap: () {
-                          controller.isSelected.value = index; // Corrected assignment
-                        Get.close(1);
+                          controller.isSelected.value =
+                              index; // Corrected assignment
+                          Get.close(1);
                         },
                         child: Row(
                           children: [
@@ -44,10 +45,9 @@ class RecommendedWidget extends GetView<DiscoverController> {
                             ],
                             TextWidget(
                               padding: EdgeInsets.only(
-                                left: controller.isSelected.value == index
-                                    ? Dimensions.horizontalSize * 0.4
-                                    : Dimensions.horizontalSize* 1.4
-                              ),
+                                  left: controller.isSelected.value == index
+                                      ? Dimensions.horizontalSize * 0.4
+                                      : Dimensions.horizontalSize * 1.4),
                               color: controller.isSelected.value == index
                                   ? CustomColor.blackColor
                                   : CustomColor.blackColor.withOpacity(0.5),
@@ -63,26 +63,31 @@ class RecommendedWidget extends GetView<DiscoverController> {
                 ),
               ),
             );
-
           },
         );
       },
-      child: Wrap(
-        spacing: Dimensions.horizontalSize * 0.2,
-        children: [
-          Padding(
-            padding: EdgeInsets.only(left: Dimensions.horizontalSize * 0.5),
-            child: Icon(
-              Icons.menu_open_outlined,
-              size: Dimensions.iconSizeSmall * 2.5,
+      child: Padding(
+        padding:  EdgeInsets.only( top: Dimensions.verticalSize * 0.2,
+            bottom: Dimensions.verticalSize * 0.2),
+        child: Wrap(
+          spacing: Dimensions.horizontalSize * 0.2,
+          children: [
+            Padding(
+              padding: EdgeInsets.only(
+                  left: Dimensions.horizontalSize * 0.5,
+              ),
+              child: Icon(
+                Icons.menu_open_outlined,
+                size: Dimensions.iconSizeSmall * 2.5,
+              ),
             ),
-          ),
-          TextWidget(
-            Strings.recommended,
-            fontSize: Dimensions.titleSmall,
-            fontWeight: FontWeight.bold,
-          )
-        ],
+            TextWidget(
+              Strings.recommended,
+              fontSize: Dimensions.titleSmall,
+              fontWeight: FontWeight.bold,
+            )
+          ],
+        ),
       ),
     );
   }

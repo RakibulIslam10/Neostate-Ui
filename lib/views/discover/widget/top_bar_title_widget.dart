@@ -17,7 +17,6 @@ class TopBarTitleWidget extends GetView<DiscoverController> {
               useSafeArea: true,
               showDragHandle: true,
               isScrollControlled: true,
-
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.vertical(
                   top: Radius.circular(Dimensions.radius * 0.6),
@@ -31,15 +30,22 @@ class TopBarTitleWidget extends GetView<DiscoverController> {
           },
           child: Wrap(
             children: [
-              Obx(() => TextWidget(
+              Obx(
+                () => TextWidget(
+                  padding: EdgeInsets.only(
+                      left: Dimensions.horizontalSize * 0.5,
+                      top: Dimensions.heightSize * 0.5),
                   controller.countrySelectMethod.value,
                   fontWeight: FontWeight.w900,
                   fontSize: Dimensions.titleLarge * 0.9,
                 ),
               ),
-              Icon(
-                Icons.expand_more,
-                size: Dimensions.iconSizeLarge * 1.1,
+              Padding(
+                padding:  EdgeInsets.only(top: Dimensions.heightSize * 0.5),
+                child: Icon(
+                  Icons.expand_more,
+                  size: Dimensions.iconSizeLarge * 1.1,
+                ),
               )
             ],
           ),
@@ -47,5 +53,4 @@ class TopBarTitleWidget extends GetView<DiscoverController> {
       ],
     );
   }
-
 }

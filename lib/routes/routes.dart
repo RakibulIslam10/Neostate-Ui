@@ -12,11 +12,13 @@ import '../bindings/report_screen_binding.dart';
 import '../bindings/setting_binding.dart';
 import '../bindings/splash_binding.dart';
 import '../bindings/test_binding.dart';
+import '../bindings/voucher_code_binding.dart';
 import '../views/bookmark/screen/bookmark_screen.dart';
 import '../views/edit_profile/screen/edit_profile_screen.dart';
 import '../views/setting/screen/setting_screen.dart';
 import '../views/splash/screen/splash_screen.dart';
 import '../views/test/screen/test_screen.dart';
+import '../views/voucher_code/screen/voucher_code_screen.dart';
 part '../routes/route_pages.dart';
 
 class Routes {
@@ -36,4 +38,5 @@ class Routes {
   static const String bookmarkScreen = '/bookmarkScreen';
   static const String settingScreen = '/settingScreen';
   static const String edit_profileScreen = '/edit_profileScreen';
+  static const String voucher_codeScreen = '/voucher_codeScreen';
 }

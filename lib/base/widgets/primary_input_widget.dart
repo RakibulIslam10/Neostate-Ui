@@ -1,4 +1,3 @@
-import 'package:flutter/services.dart';
 import '../utils/basic_import.dart';
 
 /// >>> Border Side Style
@@ -50,6 +49,7 @@ class PrimaryInputWidget extends StatefulWidget {
   final EdgeInsets? suffixIconPadding;
   final BorderStyle borderStyle;
   final String? Function(String?)? validatorFunction;
+
   const PrimaryInputWidget({
     super.key,
     required this.controller,
@@ -77,13 +77,14 @@ class PrimaryInputWidget extends StatefulWidget {
     this.inputFormatters,
     this.alignment,
     this.shadowColor,
-    this.borderStyle = BorderStyle.none,
+    this.borderStyle = BorderStyle.outline,
     this.fillColor,
     this.validatorFunction,
     this.showBorderSide = true,
     this.customShapeDecoration,
     this.onChanged,
-    this.suffixIconPadding, this.title,
+    this.suffixIconPadding,
+    this.title,
   });
 
   @override
@@ -93,13 +94,14 @@ class PrimaryInputWidget extends StatefulWidget {
 class _PrimaryInputWidgetState extends State<PrimaryInputWidget> {
   FocusNode? focusNode;
   bool isVisibility = true;
+
   @override
   Widget build(BuildContext context) {
-    return    widget.alignment != null
+    return widget.alignment != null
         ? Align(
-      alignment: widget.alignment ?? Alignment.center,
-      child: _buildTextFormFieldWidget(context),
-    )
+            alignment: widget.alignment ?? Alignment.center,
+            child: _buildTextFormFieldWidget(context),
+          )
         : _buildTextFormFieldWidget(context);
   }
 
@@ -117,9 +119,8 @@ class _PrimaryInputWidgetState extends State<PrimaryInputWidget> {
 
   _buildDecoration() {
     return InputDecoration(
-      // hintText: widget.skipEnterText
-      //     ? widget.hintText
-      //     : "${Strings.enter} ${widget.hintText}",
+      // hintText:
+      //     widget.skipEnterText ? widget.hintText : "Enter ${widget.hintText}",
       // hintStyle: CustomStyle.bodyMedium.copyWith(
       //   fontWeight: FontWeight.w400,
       //   color: Color(0xffDDDDDD),
@@ -135,134 +136,111 @@ class _PrimaryInputWidgetState extends State<PrimaryInputWidget> {
       filled: _setFilled(),
       isDense: true,
       contentPadding: _setPadding(),
+      suffixIcon: _setSuffixIcon(),
     );
   }
 
   _buildTextFormFieldWidget(BuildContext context) {
-    return Padding(
-      padding:  EdgeInsets.symmetric(horizontal: Dimensions.horizontalSize * 0.5),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-         TextWidget(
-           padding: EdgeInsets.symmetric(vertical: Dimensions.verticalSize * 0.5),
-           widget.title ?? '',fontWeight: FontWeight.bold,),
-          Container(
-            // height: 61.h,
-            decoration: widget.showShape
-                ? _buildShapeDecoration(context)
-                : const BoxDecoration(),
-            margin: EdgeInsets.zero,
-            child: Row(
-              children: [
-                Expanded(
-                  child: Padding(
-                    padding: EdgeInsets.all(Dimensions.paddingSize * 0.5),
-                    child: Column(
-                      crossAxisAlignment: crossStart,
-                      children: [
-                        _buildTitle(),
-                        TextSelectionTheme(
-                          data: TextSelectionThemeData(
-                            selectionHandleColor: CustomColor.primary,
-                          ),
-                          child: TextFormField(
-                            readOnly: widget.readOnly,
-                            controller: widget.controller,
-                            focusNode: focusNode,
-                            autofocus: widget.autoFocus,
-                            style: _setFontStyle(),
-                            inputFormatters: widget.inputFormatters,
-                            obscureText:
-                            widget.isPasswordField ? isVisibility : false,
-                            textInputAction: TextInputAction.next,
-                            keyboardType: widget.textInputType,
-                            maxLines: widget.maxLines,
-                            decoration: _buildDecoration(),
-                            validator:
-                            widget.validatorFunction ?? _setValidator(),
-                            cursorColor: CustomColor.blackColor,
-                            onChanged: widget.onChanged,
-                            onTap: () {
-                              if (!widget.readOnly) {
-                                setState(() {
-                                  focusNode!.unfocus();
-                                  focusNode!.requestFocus();
-                                });
-                              }
-                            },
-                            onFieldSubmitted: (value) {
-                              if (!widget.readOnly) {
-                                setState(() {
-                                  focusNode!.unfocus();
-                                });
-                              }
-                            },
-                            onEditingComplete: () {
-                              if (!widget.readOnly) {
-                                setState(() {
-                                  focusNode!.unfocus();
-                                });
-                              }
-                            },
-                            onTapOutside: (value) {
-                              if (!widget.readOnly) {
-                                setState(() {
-                                  focusNode!.unfocus();
-                                });
-                              }
-                            },
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-                Container(
-                  padding: widget.suffixIconPadding ??
-                      EdgeInsets.all(Dimensions.paddingSize * 0.5),
-                  child: _setSuffixIcon(),
-                )
-              ],
-            ),
+    return Column(
+      crossAxisAlignment: crossCenter,
+      children: [
+        TextWidget(
+          widget.title ?? '',
+          fontWeight: FontWeight.w900,
+          padding:
+              EdgeInsets.symmetric(vertical: Dimensions.verticalSize * 0.4),
+        ),
+        _buildTitle(),
+        TextSelectionTheme(
+          data: TextSelectionThemeData(
+            selectionHandleColor: CustomColor.primary,
           ),
-        ],
-      ),
+          child: TextFormField(
+            readOnly: widget.readOnly,
+            controller: widget.controller,
+            focusNode: focusNode,
+            autofocus: widget.autoFocus,
+            style: _setFontStyle(),
+            inputFormatters: widget.inputFormatters,
+            obscureText: widget.isPasswordField ? isVisibility : false,
+            textInputAction: TextInputAction.next,
+            keyboardType: widget.textInputType,
+            maxLines: widget.maxLines,
+            decoration: _buildDecoration(),
+            validator: widget.validatorFunction ?? _setValidator(),
+            cursorColor: CustomColor.blackColor,
+            onChanged: widget.onChanged,
+            onTap: () {
+              if (!widget.readOnly) {
+                setState(() {
+                  focusNode!.unfocus();
+                  focusNode!.requestFocus();
+                });
+              }
+            },
+            onFieldSubmitted: (value) {
+              if (!widget.readOnly) {
+                setState(() {
+                  focusNode!.unfocus();
+                });
+              }
+            },
+            onEditingComplete: () {
+              if (!widget.readOnly) {
+                setState(() {
+                  focusNode!.unfocus();
+                });
+              }
+            },
+            onTapOutside: (value) {
+              if (!widget.readOnly) {
+                setState(() {
+                  focusNode!.unfocus();
+                });
+              }
+            },
+          ),
+        ),
+      ],
     );
   }
 
   _buildTitle() {
     return widget.label != null
-        ? Row(
-      mainAxisSize: mainMin,
-      children: [
-        TextWidget(
-          widget.label!,
-          style: CustomStyle.labelSmall.copyWith(
-            fontWeight: FontWeight.w400,
-          ),
-          color: focusNode!.hasFocus
-              ? Color(0xfff1D1D1D)
-              : Color(0xff949595),
-        ),
-        if (widget.optionalText != '')
-          Row(
-            children: [
-              Sizes.width.v5,
-              TextWidget(
-                widget.optionalText ?? '',
-                style: CustomStyle.labelSmall.copyWith(
-                  fontWeight: FontWeight.w400,
+        ? Padding(
+            padding: EdgeInsets.only(
+              bottom: Dimensions.spaceBetweenInputTitleAndBox * 0.8,
+            ),
+            child: Row(
+              mainAxisSize: mainMin,
+              children: [
+                TextWidget(
+                  widget.label!,
+                  style: CustomStyle.labelSmall.copyWith(
+                    fontWeight: FontWeight.w400,
+                  ),
+                  color: focusNode!.hasFocus
+                      ? Color(0xfff1D1D1D)
+                      : Color(0xff949595),
                 ),
-                color: focusNode!.hasFocus
-                    ? Color(0xfff1D1D1D)
-                    : Color(0xff949595),
-              ),
-            ],
-          ),
-      ],
-    )
+                if (widget.optionalText != '')
+                  Row(
+                    children: [
+                      Sizes.width.v5,
+                      TextWidget(
+                        widget.optionalText ?? '',
+                        style: CustomStyle.labelSmall.copyWith(
+                          fontWeight: FontWeight.w400,
+                        ),
+                        color: focusNode!.hasFocus
+                            ? Color(0xfff1D1D1D)
+                            : Color(0xff949595),
+                      ),
+                    ],
+                  ),
+              ],
+            ),
+          )
         : Container();
   }
 
@@ -271,17 +249,17 @@ class _PrimaryInputWidgetState extends State<PrimaryInputWidget> {
       case BSS.enabledBorder:
         return BorderSide(
           width: widget.borderWidth,
-          color: CustomColor.disableColor,
+          color: Colors.grey,
         );
       case BSS.b:
         return BorderSide(
           width: widget.borderWidth,
-          color: CustomColor.disableColor,
+          color: Colors.transparent,
         );
       case BSS.disableBorder:
         return BorderSide(
           width: widget.borderWidth,
-          color: CustomColor.disableColor,
+          color: Colors.transparent,
         );
       case BSS.focusedBorder:
         return BorderSide(
@@ -301,7 +279,7 @@ class _PrimaryInputWidgetState extends State<PrimaryInputWidget> {
       default:
         return BorderSide(
           width: widget.borderWidth,
-          color: CustomColor.disableColor,
+          color: Colors.transparent,
         );
     }
   }
@@ -352,85 +330,86 @@ class _PrimaryInputWidgetState extends State<PrimaryInputWidget> {
   }
 
   _setPadding() {
-    return widget.customPadding ??
-        (widget.padding == null
-            ? EdgeInsets.zero
-            : EdgeInsets.all(widget.padding!));
+    return EdgeInsets.symmetric(
+      horizontal: Dimensions.horizontalSize * 0.6,
+      vertical: Dimensions.verticalSize * 0.5,
+    );
   }
 
   _setPrefixIcon() {
     return widget.prefixIcon ??
         (widget.prefixIconPath != ''
             ? Padding(
-          padding: EdgeInsets.symmetric(
-              horizontal: Dimensions.paddingSize * 0.4),
-          child: Row(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              CustomImageWidget(
-                path: widget.prefixIconPath!,
-                color: focusNode!.hasFocus ||
-                    widget.controller.text.isNotEmpty
-                    ? CustomColor.typography
-                    : Get.isDarkMode
-                    ? Colors.white
-                    : CustomColor.disableColor,
-              ),
-              Visibility(
-                visible: widget.phoneCode != '',
+                padding: EdgeInsets.symmetric(
+                  horizontal: Dimensions.paddingSize * 0.4,
+                ),
                 child: Row(
+                  mainAxisSize: MainAxisSize.min,
                   children: [
-                    Text(
-                      widget.phoneCode,
-                      style: TextStyle(
-                        fontSize: Dimensions.headlineSmall,
-                        fontWeight: FontWeight.w500,
-                        color: focusNode!.hasFocus
-                            ? CustomColor.primary
-                            : CustomColor.typography.withOpacity(0.2),
-                      ),
-                    ).marginOnly(
-                      left: Dimensions.horizontalSize * 0.3,
+                    CustomImageWidget(
+                      path: widget.prefixIconPath!,
+                      color: focusNode!.hasFocus ||
+                              widget.controller.text.isNotEmpty
+                          ? CustomColor.typography
+                          : Get.isDarkMode
+                              ? Colors.white
+                              : CustomColor.disableColor,
                     ),
-                    Container(
-                      margin: EdgeInsets.only(
-                        left: Dimensions.horizontalSize * 0.3,
+                    Visibility(
+                      visible: widget.phoneCode != '',
+                      child: Row(
+                        children: [
+                          Text(
+                            widget.phoneCode,
+                            style: TextStyle(
+                              fontSize: Dimensions.headlineSmall,
+                              fontWeight: FontWeight.w500,
+                              color: focusNode!.hasFocus
+                                  ? CustomColor.primary
+                                  : CustomColor.typography.withOpacity(0.2),
+                            ),
+                          ).marginOnly(
+                            left: Dimensions.horizontalSize * 0.3,
+                          ),
+                          Container(
+                            margin: EdgeInsets.only(
+                              left: Dimensions.horizontalSize * 0.3,
+                            ),
+                            height: Dimensions.heightSize * 1.5,
+                            width: 1,
+                            color: focusNode!.hasFocus
+                                ? CustomColor.primary
+                                : CustomColor.typography.withOpacity(0.2),
+                          ),
+                        ],
                       ),
-                      height: Dimensions.heightSize * 1.5,
-                      width: 1,
-                      color: focusNode!.hasFocus
-                          ? CustomColor.primary
-                          : CustomColor.typography.withOpacity(0.2),
-                    ),
+                    )
                   ],
                 ),
               )
-            ],
-          ),
-        )
             : null);
   }
 
   _setSuffixIcon() {
     return widget.isPasswordField
         ? IconButton(
-      icon: Icon(
-        isVisibility
-            ? Icons.visibility_off_outlined
-            : Icons.visibility_outlined,
-        color: focusNode!.hasFocus
-            ? CustomColor.typography
-            : Get.isDarkMode
-            ? CustomColor.typographyDark.withOpacity(0.50)
-            : CustomColor.disableColor,
-        size: Dimensions.iconSizeDefault,
-      ),
-      onPressed: () {
-        setState(() {
-          isVisibility = !isVisibility;
-        });
-      },
-    )
+            icon: Icon(
+              isVisibility
+                  ? Icons.visibility_off_outlined
+                  : Icons.visibility_outlined,
+              color: focusNode!.hasFocus
+                  ? CustomColor.typography
+                  : Get.isDarkMode
+                      ? CustomColor.typographyDark.withOpacity(0.50)
+                      : CustomColor.disableColor,
+              size: Dimensions.iconSizeDefault,
+            ),
+            onPressed: () {
+              setState(() {
+                isVisibility = !isVisibility;
+              });
+            },
+          )
         : widget.suffixIcon;
   }
 
@@ -438,26 +417,26 @@ class _PrimaryInputWidgetState extends State<PrimaryInputWidget> {
     return widget.isValidator == false
         ? null
         : (String? value) {
-      if (value!.isEmpty) {
-        return Strings.pleaseFillOutTheField;
-      } else {
-        return null;
-      }
-    };
+            if (value!.isEmpty) {
+              return Strings.pleaseFillOutTheField;
+            } else {
+              return null;
+            }
+          };
   }
 
   _buildShapeDecoration(BuildContext context) {
     return focusNode!.hasFocus
         ? widget.customShapeDecoration ??
-        BoxDecoration(
-          color: Theme.of(context).scaffoldBackgroundColor,
-          border: Border.all(width: 1, color: CustomColor.blackColor),
-          borderRadius: BorderRadius.circular(Dimensions.radius * 1.1),
-        )
+            BoxDecoration(
+              color: Theme.of(context).scaffoldBackgroundColor,
+              border: Border.all(width: 1, color: CustomColor.blackColor),
+              borderRadius: BorderRadius.circular(Dimensions.radius * 1.1),
+            )
         : BoxDecoration(
-      color: Theme.of(context).scaffoldBackgroundColor,
-      border: Border.all(width: 1, color: Color(0xffE8E8E8)),
-      borderRadius: BorderRadius.circular(Dimensions.radius * 1.2),
-    );
+            color: Theme.of(context).scaffoldBackgroundColor,
+            border: Border.all(width: 1, color: Color(0xffE8E8E8)),
+            borderRadius: BorderRadius.circular(Dimensions.radius * 1.2),
+          );
   }
 }

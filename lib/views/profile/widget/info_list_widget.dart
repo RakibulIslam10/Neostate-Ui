@@ -21,6 +21,9 @@ class InfoListWidget extends GetView<ProfileController> {
           trailing: Icon(Icons.arrow_forward_ios_outlined,size: Dimensions.iconSizeLarge * 0.8,),
         ),
         ListTile(
+          onTap: () {
+            Get.toNamed(Routes.edit_profileScreen);
+          },
           leading: Icon(Icons.question_mark_sharp),
           title: TextWidget(
             Strings.Tutorial,
@@ -33,7 +36,7 @@ class InfoListWidget extends GetView<ProfileController> {
           leading: Icon(Icons.settings),
           title: TextWidget(
             onTap: () {
-              Get.toNamed(Routes.edit_profileScreen);
+              Get.toNamed(Routes.settingScreen);
             },
             Strings.Settings,
             fontSize: Dimensions.titleSmall,
